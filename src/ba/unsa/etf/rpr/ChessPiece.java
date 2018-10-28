@@ -9,7 +9,10 @@ public abstract class ChessPiece {
     public abstract String getPosition();
     public abstract Color getColor();
     public abstract void move(String position)throws IllegalArgumentException;
-    ChessPiece(String pozicija,Color boja){
+
+    ChessPiece(String pozicija,Color boja)throws IllegalArgumentException{ //konstruktor!
+        this.pozicija=pozicija;
+        this.boja=boja;
     }
 
 
