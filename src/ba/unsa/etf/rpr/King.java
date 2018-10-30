@@ -8,14 +8,15 @@ public class King extends ChessPiece {
     super(pozicija,boja);
     }
     public static boolean legalan_za_kralja(char slovo,char broj,char slovo2,char broj2){
-        System.out.println(slovo+broj+slovo2+broj2);
+        System.out.println(slovo+" "+broj+" "+slovo2+" " +broj2);
         boolean x=false;
         if(abs(slovo-slovo2)<=1){
+            System.out.println("k");
             if(abs(broj2-broj)<=1){
                 x=true;
             }
         }
-        return true;
+        return x;
     }
 
 
