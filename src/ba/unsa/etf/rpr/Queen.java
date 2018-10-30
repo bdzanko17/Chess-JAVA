@@ -7,7 +7,9 @@ public class Queen extends ChessPiece {
 
     public static boolean legalan_za_kraljiicu(char slovo, char broj, char slovo2, char broj2) {
         boolean x = false;
-//        if((slovo==slovo2&&broj==broj2)||())
+        if((abs(slovo2-slovo)==abs(broj2-broj)) || (slovo==slovo2 &&broj!=broj2)||(slovo!=slovo2 &&broj==broj2)    )
+            x=true;
+
         return x;
     }
 
@@ -25,7 +27,13 @@ public class Queen extends ChessPiece {
         char broj = s.charAt(1);
         char slovo2 = position.charAt(0);
         char broj2 = position.charAt(1);
-
+        if ((position.charAt(0) >= 'A' && position.charAt(0) <= 'H') && position.charAt(1) >= '1' && position.charAt(1) <= '8') {
+            if (legalan_za_kraljiicu(slovo, broj, slovo2, broj2)) {
+                this.setPozicija(position);
+            } else {
+                throw new IllegalChessMoveException("Nemoguc potez");  //izuzetak
+            }
+        } else throw new IllegalArgumentException();
 
 
     }
