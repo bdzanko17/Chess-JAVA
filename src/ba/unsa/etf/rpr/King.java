@@ -19,6 +19,7 @@ public class King extends ChessPiece {
 
     @Override
     public void move(String position) throws IllegalArgumentException {
+        if((position.charAt(0)>='A'||position.charAt(0)<='H')&&position.charAt(1)>='1'&&position.charAt(1)<='8'){
 
-    }
+        }
 }
