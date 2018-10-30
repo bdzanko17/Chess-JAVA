@@ -4,11 +4,19 @@ public abstract class ChessPiece {
     public static enum Color {
         BLACK ,WHITE
     };
+
+    public class IllegalChessMoveException extends Exception{
+        IllegalChessMoveException(String s){
+            super(s);
+        }
+    }
     protected String pozicija;
     protected Color boja;
-    public abstract void move(String position)throws IllegalArgumentException;
+    public abstract void move(String position)throws IllegalArgumentException,IllegalChessMoveException;
     public abstract void setPozicija(String pozicija) ;
     public abstract void setBoja(Color boja);
+    public abstract String  getPozicija();
+    public abstract Color getBoja();
 
     ChessPiece(String pozicija,Color boja)throws IllegalArgumentException{
         if(pozicija.length()>2)throw new IllegalArgumentException();
