@@ -19,15 +19,18 @@ public class Queen extends ChessPiece {
 
     @Override
     public void move(String position) throws IllegalArgumentException, IllegalChessMoveException {
-        if (position.length() > 2 &&position.length()<=1) throw new IllegalArgumentException(); //provjera da li je dobra pozicija
+        if (position.length() > 2 || position.length()<=1) throw new IllegalArgumentException(); //provjera da li je dobra pozicija
 
-        String s = this.getPozicija();
-        System.out.println(s);
-        char slovo = s.charAt(0);
-        char broj = s.charAt(1);
-        char slovo2 = position.charAt(0);
-        char broj2 = position.charAt(1);
-        if ((position.charAt(0) >= 'A' && position.charAt(0) <= 'H') && position.charAt(1) >= '1' && position.charAt(1) <= '8') {
+
+        if (((position.charAt(0) >= 'A' && position.charAt(0) <= 'H'||(position.charAt(0) >= 'a' && position.charAt(0) <= 'h'))
+                && (position.charAt(1) >= '1' && position.charAt(1) <= '8'))) {
+            String s = this.getPozicija();
+            s.toUpperCase();
+            System.out.println(s);
+            char slovo = s.charAt(0);
+            char broj = s.charAt(1);
+            char slovo2 = position.charAt(0);
+            char broj2 = position.charAt(1);
             if (legalan_za_kraljiicu(slovo, broj, slovo2, broj2)) {
                 this.setPozicija(position);
             } else {

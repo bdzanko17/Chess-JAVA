@@ -57,7 +57,7 @@ class KingTest {
         King k = new King("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
-                () -> k.move("C0")
+                () -> k.move("c0")
         );
     }
 
