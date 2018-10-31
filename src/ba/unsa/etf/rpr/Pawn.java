@@ -6,9 +6,26 @@ public class Pawn extends ChessPiece {
     Pawn(String pozicija, Color boja) throws IllegalArgumentException {
         super(pozicija, boja);
     }
-    public static boolean legalan_za_piuna(char slovo, char broj, char slovo2, char broj2) {
+    public static boolean legalan_za_piuna(char slovo, char broj, char slovo2, char broj2,Color boja) {
         boolean x = false;
-        if((slovo==slovo2 &&broj!=broj2&&broj2==broj+1 )||(slovo+1==slovo2&&broj2==broj+1))x=true;
+
+        if(boja==Color.WHITE){
+            if((slovo==slovo2 &&abs(broj2-broj)==1  &&broj2>broj) ||(abs(slovo-slovo2)==1&&broj2>broj&&abs(broj-broj2)==1)
+                    ||(slovo==slovo2&&abs(broj2-broj)==2&&broj2>broj))x=true;
+        }else if(boja==Color.BLACK){
+            if((slovo==slovo2 &&abs(broj2-broj)==1  &&broj2<broj) ||(abs(slovo-slovo2)==1&&broj2<broj&&abs(broj-broj2)==1)
+             ||(slovo==slovo2&&abs(broj2-broj)==2&&broj2<broj))x=true;
+
+        }
+
+
+//        if((slovo==slovo2 &&broj!=broj2&&broj2==broj+1 )||(slovo+1==slovo2&&broj2==broj+1)){x=true;
+//            if(boja==Color.WHITE){
+//                if(broj2<broj)x=false;
+//        }else if(boja==Color.BLACK){
+//                if(broj2>broj)x=false;
+//            }
+//        }
         return x;
     }
 
@@ -23,7 +40,7 @@ public class Pawn extends ChessPiece {
         char slovo2 = position.charAt(0);
         char broj2 = position.charAt(1);
         if ((position.charAt(0) >= 'A' && position.charAt(0) <= 'H') && position.charAt(1) >= '1' && position.charAt(1) <= '8') {
-            if (legalan_za_piuna(slovo, broj, slovo2, broj2)) {
+            if (legalan_za_piuna(slovo, broj, slovo2, broj2,this.getBoja())) {
                 this.setPozicija(position);
             } else {
                 throw new IllegalChessMoveException("Nemoguc potez");  //izuzetak
