@@ -34,7 +34,6 @@ public class Pawn extends ChessPiece {
         if (position.length() > 2 &&position.length()<=1) throw new IllegalArgumentException(); //provjera da li je dobra pozicija
 
         String s = this.getPozicija();
-        System.out.println(s);
         char slovo = s.charAt(0);
         char broj = s.charAt(1);
         char slovo2 = position.charAt(0);
