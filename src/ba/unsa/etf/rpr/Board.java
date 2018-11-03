@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    ChessPiece[][] tabla;
+   public ChessPiece[][] tabla;
 
     Board() {
 
@@ -58,13 +58,15 @@ public class Board {
         }
     }
 
-    void move(Class type, ChessPiece.Color color, String position)throws IllegalArgumentException, ChessPiece.IllegalChessMoveException {
-        for(int i=0;i<8;i++){
-            for(int j=0;j<8;j++){
-                if(tabla[i][j].getClass()==type && tabla[i][j].getBoja()==color){
-                    
-                }
+    void move(Class type, ChessPiece.Color color, String position) throws IllegalArgumentException, ChessPiece.IllegalChessMoveException {
+        Boolean legalan = false;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (tabla[i][j].getClass() == type && tabla[i][j].getBoja() == color) {
+                    legalan = true;
+                } else break;
             }
+            if (legalan == true) break;
         }
     }
 
