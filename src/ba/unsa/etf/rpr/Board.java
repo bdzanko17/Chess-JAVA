@@ -8,7 +8,6 @@ import java.util.List;
 public class Board {
     ChessPiece[][] tabla;
 
-
     Board() {
 
         tabla = new ChessPiece[8][8];
@@ -55,6 +54,16 @@ public class Board {
             for (int j = 0; j < 8; j++) {
                 if (tabla[i][j] != null)
                     System.out.println(tabla[i][j].getClass());
+            }
+        }
+    }
+
+    void move(Class type, ChessPiece.Color color, String position)throws IllegalArgumentException, ChessPiece.IllegalChessMoveException {
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                if(tabla[i][j].getClass()==type && tabla[i][j].getBoja()==color){
+                    
+                }
             }
         }
     }

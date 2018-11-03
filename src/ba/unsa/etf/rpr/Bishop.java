@@ -2,14 +2,17 @@ package ba.unsa.etf.rpr;
 import static java.lang.Math.abs;
 
 public class Bishop extends ChessPiece {
+
     Bishop(String pozicija, Color boja) throws IllegalArgumentException {
         super(pozicija, boja);
     }
+
     public static boolean legalan_za_lovca(char slovo, char broj, char slovo2, char broj2) {
         boolean x = false;
         if(slovo!=slovo2&&broj!=broj2&&(abs(slovo2-slovo)==abs(broj2-broj))) x=true;
         return x;
     }
+
     @Override
     public void move(String position) throws IllegalArgumentException, IllegalChessMoveException {
         if (position.length() > 2 || position.length()<=1) throw new IllegalArgumentException(); //provjera da li je dobra pozicija
