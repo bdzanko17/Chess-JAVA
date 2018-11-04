@@ -24,7 +24,7 @@ public abstract class ChessPiece {
     }
 
     ChessPiece(String pozicija,Color boja)throws IllegalArgumentException{
-        if(pozicija.length()>2||pozicija.length()<=1)throw new IllegalArgumentException();
+        if(pozicija.length()>2&&pozicija.length()<=1)throw new IllegalArgumentException();
         if((pozicija.charAt(0)>='A'&&pozicija.charAt(0)<='H')&&pozicija.charAt(1)>='1'&&pozicija.charAt(1)<='8'){
             this.pozicija=pozicija;
             this.boja=boja;
