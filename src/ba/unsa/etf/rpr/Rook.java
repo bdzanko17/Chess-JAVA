@@ -15,7 +15,6 @@ public class Rook extends ChessPiece{
                 && position.charAt(1) >= '1' && position.charAt(1) <= '8')) {
             String s = this.getPozicija();
             s.toUpperCase();
-            System.out.println(s);
             char slovo = s.charAt(0);
             char broj = s.charAt(1);
             char slovo2 = position.charAt(0);
