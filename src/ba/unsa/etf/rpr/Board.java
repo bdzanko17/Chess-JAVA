@@ -21,32 +21,41 @@ public class Board {
         }
         return ima;
     }
-    public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla,ChessPiece figura, String odrediste) {
+
+    public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla, ChessPiece figura, String odrediste) {
         boolean drugeBoje = false;
-      for(int i=0;i<tabla.length;i++){
-            if(tabla[i].getPozicija()==odrediste){
-                if(tabla[i].getBoja()!=figura.getBoja()){
-                    drugeBoje=true;
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i].getPozicija() == odrediste) {
+                if (tabla[i].getBoja() != figura.getBoja()) {
+                    drugeBoje = true;
                 }
             }
-                  }
-      return drugeBoje;
-    }
-    public  static List<String> daliimafiguraizmedjupozicija(ChessPiece[] tabla,String novaPozicija,String staraPozicija){
-        char slovoNovePozicije=novaPozicija.charAt(0);
-        char slovoStarePozicije=staraPozicija.charAt(0);
-        int brojNoveP=novaPozicija.charAt(1);
-        int brojStareP=staraPozicija.charAt(1);
-        List<String> tacke=new ArrayList<>();
-
-        if(abs(slovoNovePozicije-slovoStarePozicije)==0){
-           for(int i=brojStareP;i<=brojNoveP;i++){
-               char slovo= (char) i;
-             String  x=slovoNovePozicije+Character.toString(slovo);
-               tacke.add(x);
-           }
         }
-        return tacke;
+        return drugeBoje;
+    }
+
+    public static List<String> daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
+        char slovoNovePozicije = novaPozicija.charAt(0);
+        char slovoStarePozicije = staraPozicija.charAt(0);
+        char brojNoveP = novaPozicija.charAt(1);
+        char brojStareP = staraPozicija.charAt(1);
+        List<String> tacke = new ArrayList<>();
+
+        if (abs(slovoNovePozicije - slovoStarePozicije) == 0) {//za isto slovo tacke
+            for (int i = brojStareP + 1; i < brojNoveP; i++) { //mora se naci veci
+                char slovo = (char) i;
+                String x = slovoNovePozicije + Character.toString(slovo);
+                tacke.add(x);
+            }
+        } else if (abs(brojNoveP-brojStareP)==0){
+            for(int i=slovoStarePozicije+1;i<slovoNovePozicije;i++){
+                String x=Character.toString((char)i)+Character.toString(brojNoveP);
+                tacke.add(x);
+            }
+        }
+
+            return tacke;
+
     }
 
 
@@ -106,12 +115,12 @@ public class Board {
                 }
                 if (proslo == true) {                   //ZNACI MOZE SE POMJERITI
                     if (daliImaNaOdredistuFigure(tabla, position)) {                 //PROVJERA DA LI IMA NA ODREDISNOJ //provjera da li je druge boje
-                        if(daliJeFiguraDrugeBoje(tabla,tabla[i],position)){         //da li je druge boje //pojesti
+                        if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {         //da li je druge boje //pojesti
 
-                        }else{
+                        } else {
 
                         }
-                    }else{
+                    } else {
 
                     }
                 }
