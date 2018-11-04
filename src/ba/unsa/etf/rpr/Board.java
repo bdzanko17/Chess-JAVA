@@ -1,12 +1,24 @@
 package ba.unsa.etf.rpr;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import org.omg.CORBA.CODESET_INCOMPATIBLE;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
     public ChessPiece[] tabla;
+
+    public static boolean daliImaNaOdredistuFigure(ChessPiece [] tabla,String odrediste){
+        boolean ima=false;
+        for(int i=0;i<tabla.length;i++){
+            if(tabla[i].getPozicija()==odrediste){
+                ima=true;
+                break;
+            }
+        }
+        return ima;
+    }
 
     Board() {
         int counter = 0;//za bijele
@@ -49,13 +61,21 @@ public class Board {
 
     void move(Class type, ChessPiece.Color color, String position)
             throws IllegalArgumentException, IllegalChessMoveException {
+        String staraPozicija;
+        boolean proslo=false;
 
         for(int i=0;i<this.tabla.length;i++){
             if(tabla[i].getClass()==type&&tabla[i].getBoja()==color){
                 try{
+                    staraPozicija=tabla[i].getPozicija();
+                    tabla[i].move(position);
+                    proslo=true;
 
                 }catch (Exception e){
-                    throw new IllegalChessMoveException("pogresno");
+                    continue;
+                }
+                if(proslo==true){                   //ZNACI MOZE SE POMJERITI
+                                                                            //PROVJERA DA LI IMA NA ODREDISNOJ
                 }
             }
         }
