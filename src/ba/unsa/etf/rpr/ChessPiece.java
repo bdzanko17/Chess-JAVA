@@ -5,7 +5,7 @@ public abstract class ChessPiece {
         BLACK, WHITE
     }
 
-    ;
+
 
 
 

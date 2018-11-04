@@ -1,11 +1,11 @@
 package ba.unsa.etf.rpr;
 
-public class Main {
-    public static void main(String[] args) throws ChessPiece.IllegalChessMoveException {
-        Board tabla = new Board();
+import java.util.List;
 
-        for (int i = 0; i < tabla.tabla.length; i++) {
-            System.out.println(tabla.tabla[i].getPozicija());
-        }
+public class Main {
+    public static void main(String[] args) throws IllegalChessMoveException {
+        Board tabla = new Board();
+        List<String> benjo=tabla.daliimafiguraizmedjupozicija(tabla.tabla,"A8","A1");
+        benjo.forEach(System.out::println);
     }
 }

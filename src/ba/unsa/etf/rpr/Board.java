@@ -6,6 +6,8 @@ import org.omg.CORBA.CODESET_INCOMPATIBLE;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.abs;
+
 public class Board {
     public ChessPiece[] tabla;
 
@@ -29,6 +31,22 @@ public class Board {
             }
                   }
       return drugeBoje;
+    }
+    public  static List<String> daliimafiguraizmedjupozicija(ChessPiece[] tabla,String novaPozicija,String staraPozicija){
+        char slovoNovePozicije=novaPozicija.charAt(0);
+        char slovoStarePozicije=staraPozicija.charAt(0);
+        int brojNoveP=novaPozicija.charAt(1);
+        int brojStareP=staraPozicija.charAt(1);
+        List<String> tacke=new ArrayList<>();
+
+        if(abs(slovoNovePozicije-slovoStarePozicije)==0){
+           for(int i=brojStareP;i<=brojNoveP;i++){
+               char slovo= (char) i;
+             String  x=slovoNovePozicije+Character.toString(slovo);
+               tacke.add(x);
+           }
+        }
+        return tacke;
     }
 
 
