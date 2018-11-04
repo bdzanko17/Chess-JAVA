@@ -8,7 +8,7 @@ public class MrtvaFigura extends ChessPiece {
 
     @Override
     public void move(String position) throws IllegalArgumentException, IllegalChessMoveException {
-                this.pozicija=position;
+        this.pozicija = position;
     }
 
     @Override

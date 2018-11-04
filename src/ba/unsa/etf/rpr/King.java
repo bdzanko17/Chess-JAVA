@@ -5,7 +5,7 @@ import static java.lang.Math.abs;
 public class King extends ChessPiece {
 
 
-    King(String pozicija, Color boja) throws IllegalArgumentException{
+    King(String pozicija, Color boja) throws IllegalArgumentException {
         super(pozicija, boja);
     }
 
@@ -24,10 +24,11 @@ public class King extends ChessPiece {
     @Override
     public void move(String position) throws IllegalArgumentException, IllegalChessMoveException {
 
-        if (position.length() > 2 || position.length()<=1) throw new IllegalArgumentException(); //provjera da li je dobra pozicija
+        if (position.length() > 2 || position.length() <= 1)
+            throw new IllegalArgumentException(); //provjera da li je dobra pozicija
 
 
-        if (((position.charAt(0) >= 'A' && position.charAt(0) <= 'H'||(position.charAt(0) >= 'a' && position.charAt(0) <= 'h'))
+        if (((position.charAt(0) >= 'A' && position.charAt(0) <= 'H' || (position.charAt(0) >= 'a' && position.charAt(0) <= 'h'))
                 && position.charAt(1) >= '1' && position.charAt(1) <= '8')) {
             String s = this.getPozicija();
             s.toUpperCase();

@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr;
+
 import static java.lang.Math.abs;
 
 public class Bishop extends ChessPiece {
@@ -9,16 +10,17 @@ public class Bishop extends ChessPiece {
 
     public static boolean legalan_za_lovca(char slovo, char broj, char slovo2, char broj2) {
         boolean x = false;
-        if(slovo!=slovo2&&broj!=broj2&&(abs(slovo2-slovo)==abs(broj2-broj))) x=true;
+        if (slovo != slovo2 && broj != broj2 && (abs(slovo2 - slovo) == abs(broj2 - broj))) x = true;
         return x;
     }
 
     @Override
     public void move(String position) throws IllegalArgumentException, IllegalChessMoveException {
-        if (position.length() > 2 || position.length()<=1) throw new IllegalArgumentException(); //provjera da li je dobra pozicija
+        if (position.length() > 2 || position.length() <= 1)
+            throw new IllegalArgumentException(); //provjera da li je dobra pozicija
 
 
-        if (((position.charAt(0) >= 'A' && position.charAt(0) <= 'H'||(position.charAt(0) >= 'a' && position.charAt(0) <= 'h'))
+        if (((position.charAt(0) >= 'A' && position.charAt(0) <= 'H' || (position.charAt(0) >= 'a' && position.charAt(0) <= 'h'))
                 && position.charAt(1) >= '1' && position.charAt(1) <= '8')) {
             String s = this.getPozicija();
             s.toUpperCase();
@@ -37,16 +39,16 @@ public class Bishop extends ChessPiece {
 
     @Override
     public void setPozicija(String pozicija) {
-        this.pozicija=pozicija;
+        this.pozicija = pozicija;
     }
 
     @Override
     public void setBoja(Color boja) {
-        this.boja=boja;
+        this.boja = boja;
     }
 
     @Override
-    public String  getPozicija() {
+    public String getPozicija() {
         return this.pozicija;
     }
 
