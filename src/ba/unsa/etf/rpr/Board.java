@@ -9,16 +9,28 @@ import java.util.List;
 public class Board {
     public ChessPiece[] tabla;
 
-    public static boolean daliImaNaOdredistuFigure(ChessPiece [] tabla,String odrediste){
-        boolean ima=false;
-        for(int i=0;i<tabla.length;i++){
-            if(tabla[i].getPozicija()==odrediste){
-                ima=true;
+    public static boolean daliImaNaOdredistuFigure(ChessPiece[] tabla, String odrediste) {
+        boolean ima = false;
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i].getPozicija() == odrediste) {
+                ima = true;
                 break;
             }
         }
         return ima;
     }
+    public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla,ChessPiece figura, String odrediste) {
+        boolean drugeBoje = false;
+      for(int i=0;i<tabla.length;i++){
+            if(tabla[i].getPozicija()==odrediste){
+                if(tabla[i].getBoja()!=figura.getBoja()){
+                    drugeBoje=true;
+                }
+            }
+                  }
+      return drugeBoje;
+    }
+
 
     Board() {
         int counter = 0;//za bijele
@@ -62,20 +74,28 @@ public class Board {
     void move(Class type, ChessPiece.Color color, String position)
             throws IllegalArgumentException, IllegalChessMoveException {
         String staraPozicija;
-        boolean proslo=false;
+        boolean proslo = false;
 
-        for(int i=0;i<this.tabla.length;i++){
-            if(tabla[i].getClass()==type&&tabla[i].getBoja()==color){
-                try{
-                    staraPozicija=tabla[i].getPozicija();
+        for (int i = 0; i < this.tabla.length; i++) {
+            if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
+                try {
+                    staraPozicija = tabla[i].getPozicija();
                     tabla[i].move(position);
-                    proslo=true;
+                    proslo = true;
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     continue;
                 }
-                if(proslo==true){                   //ZNACI MOZE SE POMJERITI
-                                                                            //PROVJERA DA LI IMA NA ODREDISNOJ
+                if (proslo == true) {                   //ZNACI MOZE SE POMJERITI
+                    if (daliImaNaOdredistuFigure(tabla, position)) {                 //PROVJERA DA LI IMA NA ODREDISNOJ //provjera da li je druge boje
+                        if(daliJeFiguraDrugeBoje(tabla,tabla[i],position)){         //da li je druge boje //pojesti
+
+                        }else{
+
+                        }
+                    }else{
+
+                    }
                 }
             }
         }
