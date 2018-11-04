@@ -9,6 +9,8 @@ public class Board {
    public ChessPiece[] tabla;
 
     Board() {
+        int counter=0;//za bijele
+        int counter2=0;//za crne
             tabla=new ChessPiece[32];
             tabla[0]=new Rook("A1", ChessPiece.Color.WHITE);
             tabla[1]=new Knight("B1", ChessPiece.Color.WHITE);
@@ -19,11 +21,16 @@ public class Board {
             tabla[6]=new Knight("G1", ChessPiece.Color.WHITE);
             tabla[7]=new Rook("H1", ChessPiece.Color.WHITE);
             for(int i=8;i<=23;i++){
-                char x = (char) ('A' + i);
-                String s= x+Integer.toString(2);
-                if(i<16)
-                tabla[i]=new Pawn(s, ChessPiece.Color.WHITE);
-                else{
+
+                if(i<16) {
+                    char x = (char) ('A' + counter++);
+                    String s= x+Integer.toString(2);
+                    tabla[i] = new Pawn(s, ChessPiece.Color.WHITE);
+
+                }else{
+
+                    char x = (char) ('A' + counter2++);
+                    String s= x+Integer.toString(7);
                     tabla[i]=new Pawn(s, ChessPiece.Color.BLACK);
 
                 }
@@ -43,6 +50,7 @@ public class Board {
     }
 
     void move(Class type, ChessPiece.Color color, String position) throws IllegalArgumentException, ChessPiece.IllegalChessMoveException {
+
 
     }
 
