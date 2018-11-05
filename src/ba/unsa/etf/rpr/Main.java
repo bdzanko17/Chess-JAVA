@@ -5,9 +5,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IllegalChessMoveException, CloneNotSupportedException {
         Board tabla = new Board();
-            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
 
-        System.out.println(tabla.daliimafiguraizmedjupozicija(tabla.tabla,"A6","F1"));
+        System.out.println(tabla.daliimafiguraizmedjupozicija(tabla.tabla,"D2","G5"));
 
 //        try {
 //            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
