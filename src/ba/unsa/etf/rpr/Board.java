@@ -34,13 +34,13 @@ public class Board {
         return drugeBoje;
     }
 
-    public static boolean daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
+    public static boolean daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) throws IllegalChessMoveException {
         char slovoNovePozicije = novaPozicija.charAt(0);
         char slovoStarePozicije = staraPozicija.charAt(0);
         char brojNoveP = novaPozicija.charAt(1);
         char brojStareP = staraPozicija.charAt(1);
         List<String> tacke = new ArrayList<>();
-        boolean ima=false;
+        boolean ima = false;
 
         if (abs(slovoNovePozicije - slovoStarePozicije) == 0) {//za isto slovo tacke
             for (int i = brojStareP + 1; i < brojNoveP; i++) { //mora se naci veci
@@ -54,19 +54,21 @@ public class Board {
                 tacke.add(x);
             }
         } else if (abs(brojNoveP - brojStareP) == abs(slovoNovePozicije - slovoStarePozicije)) {
-           for(int i=brojStareP+1;i<brojNoveP;i++){
-               String x = Character.toString(++slovoStarePozicije) + (char)i;
-               tacke.add(x);
-           }
+            for (int i = brojStareP + 1; i < brojNoveP; i++) {
+                String x = Character.toString(++slovoStarePozicije) + (char) i;
+                tacke.add(x);
+            }
+        }else{
+            throw new IllegalChessMoveException("greska");
         }
-        for(int i=0;i<tabla.length;i++){
-            for(int j=0;j<tacke.size();i++){
-                if(tabla[i].getPozicija().equals(tacke.get(j))){
-                    ima=true;
+        for (int i = 0; i < tabla.length; i++) {
+            for (int j = 0; j < tacke.size(); i++) {
+                if (tabla[i].getPozicija().equals(tacke.get(j))) {
+                    ima = true;
                     break;
                 }
             }
-            if(ima==true)
+            if (ima == true)
                 break;
         }
         return ima;
@@ -115,7 +117,7 @@ public class Board {
 
     void move(Class type, ChessPiece.Color color, String position)
             throws IllegalArgumentException, IllegalChessMoveException {
-        String staraPozicija;
+        String staraPozicija="XD";
         boolean proslo = false;
 
         for (int i = 0; i < this.tabla.length; i++) {
@@ -128,18 +130,30 @@ public class Board {
                 } catch (Exception e) {
                     continue;
                 }
-                if (proslo == true) {                   //ZNACI MOZE SE POMJERITI
-                    if (daliImaNaOdredistuFigure(tabla, position)) {                 //PROVJERA DA LI IMA NA ODREDISNOJ //provjera da li je druge boje
+                if (proslo == true) {
+                   if (daliImaNaOdredistuFigure(tabla, position)) {
                         if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {         //da li je druge boje //pojesti
 
+                            for (int j = 0; j < tabla.length; j++) {
+                                if (tabla[j].getPozicija() == position) {
+                                    tabla[j] = null;
+                                }
+                            }
                         } else {
-
+                            tabla[i].move(staraPozicija);
                         }
                     } else {
-
+                        System.out.println("uspjesno pomjerena bez jedenja!!");
                     }
                 }
+                if(daliimafiguraizmedjupozicija(tabla,position,staraPozicija)){
+                    tabla[i].move(staraPozicija);
+                    System.out.println("ne moguce odigrati potez");
+                    throw new IllegalChessMoveException("greska");
+                }
+
             }
+
         }
 
     }

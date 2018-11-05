@@ -5,7 +5,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IllegalChessMoveException {
         Board tabla = new Board();
-        List<String> benjo=tabla.daliimafiguraizmedjupozicija(tabla.tabla,"H8","A1");
-        benjo.forEach(System.out::println);
+       try{
+           tabla.move(Pawn.class, ChessPiece.Color.WHITE,"A4");
+       }catch (Exception e){
+           System.out.println("greskaAAA");
+       }
     }
 }
