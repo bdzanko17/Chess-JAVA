@@ -14,7 +14,7 @@ public class Board {
     public static boolean daliImaNaOdredistuFigure(ChessPiece[] tabla, String odrediste) {
         boolean ima = false;
         for (int i = 0; i < tabla.length; i++) {
-            if (tabla[i].getPozicija() == odrediste) {
+            if (tabla[i].getPozicija().equals(odrediste)) {
                 ima = true;
                 break;
             }
@@ -119,6 +119,7 @@ public class Board {
             throws IllegalArgumentException, IllegalChessMoveException {
         String staraPozicija="XD";
         boolean proslo = false;
+        List<ChessPiece> figure;
 
         for (int i = 0; i < this.tabla.length; i++) {
             if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
@@ -126,29 +127,33 @@ public class Board {
                     staraPozicija = tabla[i].getPozicija();
                     tabla[i].move(position);
                     proslo = true;
+                    tabla[i].move(staraPozicija);
 
                 } catch (Exception e) {
                     continue;
                 }
                 if (proslo == true) {
                    if (daliImaNaOdredistuFigure(tabla, position)) {
+                       System.out.println("XD");
                         if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {         //da li je druge boje //pojesti
-
+                                System.out.println("pojedena figura");
+                                tabla[i].move(position);
                             for (int j = 0; j < tabla.length; j++) {
                                 if (tabla[j].getPozicija() == position) {
                                     tabla[j] = null;
                                 }
                             }
                         } else {
-                            tabla[i].move(staraPozicija);
+                            System.out.println(" nije druge je boje!");
                         }
                     } else {
                         System.out.println("uspjesno pomjerena bez jedenja!!");
+                        tabla[i].move(position);
                     }
                 }
                 if(daliimafiguraizmedjupozicija(tabla,position,staraPozicija)){
                     tabla[i].move(staraPozicija);
-                    System.out.println("ne moguce odigrati potez");
+                    System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
                     throw new IllegalChessMoveException("greska");
                 }
 
