@@ -144,19 +144,26 @@ public class Board {
 
         for (int i = 0; i < this.tabla.length; i++) {
             if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
+
                 try {
                     staraPozicija = tabla[i].getPozicija();
                     tabla[i].move(position);
-                    proslo = true;
-                    tabla[i].move(staraPozicija);       /*moze se pomjeriti ali da vidimo da li smeta šta*/
+                    tabla[i].move(staraPozicija);
+                    /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                 } catch (Exception e) {
-                    continue;
+                    System.out.println(tabla[i].getPozicija());
+
+
                 }
-                if (proslo == true) {
-                   if (daliImaNaOdredistuFigure(tabla, position)) {
-                       System.out.println("XD");
-                        if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {         //da li je druge boje //pojesti
+
+
+
+                    if (daliImaNaOdredistuFigure(tabla, position)) {
+
+                       System.out.println("Ima figura");
+                        if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
+                            System.out.println("druge je boje pojestiii");
                                 System.out.println("pojedena figura");
                                 tabla[i].move(position);
                             for (int j = 0; j < tabla.length; j++) {
@@ -166,13 +173,13 @@ public class Board {
                             }
                         } else {
                             System.out.println(" nije druge je boje!");
-                            throw new IllegalChessMoveException("ne moguc potez figura se nalazi");
+                            throw new IllegalChessMoveException("nemoguc POTEZ SMETA TVOJA FIGURA");
                         }
                     } else {
                         System.out.println("uspjesno pomjerena bez jedenja!!");
                         tabla[i].move(position);
                     }
-                }
+
                 if(daliimafiguraizmedjupozicija(tabla,position,staraPozicija)){
                     tabla[i].move(staraPozicija);
                     System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
