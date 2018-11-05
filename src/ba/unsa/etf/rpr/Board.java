@@ -148,14 +148,10 @@ public class Board {
                 try {
                     staraPozicija = tabla[i].getPozicija();
                     tabla[i].move(position);
-                    tabla[i].move(staraPozicija);
-                    /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                 } catch (Exception e) {
-                    System.out.println(tabla[i].getPozicija());
 
-
-                }
+                                    }
 
 
 
