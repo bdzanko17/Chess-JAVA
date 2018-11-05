@@ -145,6 +145,7 @@ public class Board {
                             }
                         } else {
                             System.out.println(" nije druge je boje!");
+                            throw new IllegalChessMoveException("ne moguc potez figura se nalazi");
                         }
                     } else {
                         System.out.println("uspjesno pomjerena bez jedenja!!");
