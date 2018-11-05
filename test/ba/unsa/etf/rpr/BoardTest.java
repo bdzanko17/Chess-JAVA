@@ -1,42 +1,42 @@
-//package ba.unsa.etf.rpr;
-//
-//import org.junit.jupiter.api.Test;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//class BoardTest {
-//
-//    @Test
-//    // Is the board usable after isCheck
-//    void someLegalMoves() {
-//        Board b = new Board();
+package ba.unsa.etf.rpr;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BoardTest {
+
+    @Test
+    // Is the board usable after isCheck
+    void someLegalMoves() {
+        Board b = new Board();
 //        boolean no = b.isCheck(ChessPiece.Color.WHITE);
-//        assertDoesNotThrow(
-//                () -> {
-//                    b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
-//                    b.move(Bishop.class, ChessPiece.Color.WHITE, "A6");
-//                    b.move(Knight.class, ChessPiece.Color.WHITE, "C3");
-//                    b.move(King.class, ChessPiece.Color.WHITE, "E2");
-//                    b.move(King.class, ChessPiece.Color.WHITE, "E3");
-//                }
-//        );
-//    }
-//
-//    @Test
-//    // Pawn eats diagonally, check by queen
-//    void pawnDiagonal() {
-//        Board b = new Board();
-//        assertDoesNotThrow(
-//            () -> {
-//                b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
-//                b.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
-//                b.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
-//                b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
-//                b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
-//            }
-//        );
-//    }
-//
+        assertDoesNotThrow(
+                () -> {
+                    b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
+                    b.move(Bishop.class, ChessPiece.Color.WHITE, "A6");
+                    b.move(Knight.class, ChessPiece.Color.WHITE, "C3");
+                    b.move(King.class, ChessPiece.Color.WHITE, "E2");
+                    b.move(King.class, ChessPiece.Color.WHITE, "E3");
+                }
+        );
+    }
+
+    @Test
+    // Pawn eats diagonally, check by queen
+    void pawnDiagonal() {
+        Board b = new Board();
+        assertDoesNotThrow(
+            () -> {
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
+            }
+        );
+    }
+
 //    @Test
 //    // Check by queen
 //    void isCheck() {
@@ -53,7 +53,7 @@
 //        }
 //        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
 //    }
-//
+
 //    @Test
 //    // Will queen be moved by isCheck
 //    void isCheckUsable() {
@@ -75,35 +75,35 @@
 //            }
 //        );
 //    }
-//
-//    @Test
-//    // Queen, bishop and rook can't jump pieces
-//    void jumpPiece() {
-//        Board b = new Board();
-//        assertAll(
-//                () -> assertThrows(
-//                        IllegalChessMoveException.class,
-//                        () -> b.move(Rook.class, ChessPiece.Color.BLACK, "H6")
-//                ),
-//                () -> assertThrows(
-//                        IllegalChessMoveException.class,
-//                        () -> b.move(Bishop.class, ChessPiece.Color.BLACK, "H6")
-//                ),
-//                () -> assertThrows(
-//                        IllegalChessMoveException.class,
-//                        () -> b.move(Queen.class, ChessPiece.Color.BLACK, "A5")
-//                )
-//        );
-//    }
-//
-//
-//    // Same test with other move method
-//
+
+    @Test
+    // Queen, bishop and rook can't jump pieces
+    void jumpPiece() {
+        Board b = new Board();
+        assertAll(
+                () -> assertThrows(
+                        IllegalChessMoveException.class,
+                        () -> b.move(Rook.class, ChessPiece.Color.BLACK, "H6")
+                ),
+                () -> assertThrows(
+                        IllegalChessMoveException.class,
+                        () -> b.move(Bishop.class, ChessPiece.Color.BLACK, "H6")
+                ),
+                () -> assertThrows(
+                        IllegalChessMoveException.class,
+                        () -> b.move(Queen.class, ChessPiece.Color.BLACK, "A5")
+                )
+        );
+    }
+
+
+    // Same test with other move method
+
 //    @Test
 //    // Is the board usable after isCheck
 //    void someLegalMoves1() {
 //        Board b = new Board();
-//        boolean no = b.isCheck(ChessPiece.Color.WHITE);
+////        boolean no = b.isCheck(ChessPiece.Color.WHITE);
 //        assertDoesNotThrow(
 //                () -> {
 //                    b.move("E2", "E4");
@@ -129,7 +129,7 @@
 //                }
 //        );
 //    }
-//
+
 //    @Test
 //    // Check by queen
 //    void isCheck1() {
@@ -166,7 +166,7 @@
 //                )
 //        );
 //    }
-//
+////
 //    @Test
 //    // Check by queen
 //    void isCheckUsable1() {
@@ -188,4 +188,4 @@
 //                }
 //        );
 //    }
-//}
+}

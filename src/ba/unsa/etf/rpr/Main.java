@@ -3,17 +3,21 @@ package ba.unsa.etf.rpr;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IllegalChessMoveException {
+    public static void main(String[] args) throws IllegalChessMoveException, CloneNotSupportedException {
         Board tabla = new Board();
+            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
 
-        try {
-            tabla.move(Rook.class,ChessPiece.Color.WHITE,"A4");
+        System.out.println(tabla.daliimafiguraizmedjupozicija(tabla.tabla,"A6","F1"));
 
-        }catch (Exception e){
-            System.out.println("greskaaaaaaa");
-        }
-for(int i=0;i<tabla.tabla.length;i++){
-    System.out.println(tabla.tabla[i].getPozicija());
-}
+//        try {
+//            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
+//            tabla.move(Bishop.class, ChessPiece.Color.WHITE, "A6");
+//
+//        }catch (Exception e){
+//            System.out.println("greskaaaaaaa");
+//        }
+//for(int i=0;i<tabla.tabla.length;i++){
+//    System.out.println(tabla.tabla[i].getPozicija());
+//}
         }
 }
