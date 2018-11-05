@@ -34,12 +34,13 @@ public class Board {
         return drugeBoje;
     }
 
-    public static List<String> daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
+    public static boolean daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
         char slovoNovePozicije = novaPozicija.charAt(0);
         char slovoStarePozicije = staraPozicija.charAt(0);
         char brojNoveP = novaPozicija.charAt(1);
         char brojStareP = staraPozicija.charAt(1);
         List<String> tacke = new ArrayList<>();
+        boolean ima=false;
 
         if (abs(slovoNovePozicije - slovoStarePozicije) == 0) {//za isto slovo tacke
             for (int i = brojStareP + 1; i < brojNoveP; i++) { //mora se naci veci
@@ -58,8 +59,17 @@ public class Board {
                tacke.add(x);
            }
         }
-
-        return tacke;
+        for(int i=0;i<tabla.length;i++){
+            for(int j=0;j<tacke.size();i++){
+                if(tabla[i].getPozicija().equals(tacke.get(j))){
+                    ima=true;
+                    break;
+                }
+            }
+            if(ima==true)
+                break;
+        }
+        return ima;
 
     }
 
