@@ -7,8 +7,7 @@ public class Main {
         Board tabla = new Board();
 
         try {
-            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "A4");
-            tabla.move(Rook.class,ChessPiece.Color.WHITE,"A2");
+            tabla.move(Rook.class,ChessPiece.Color.WHITE,"A4");
 
         }catch (Exception e){
             System.out.println("greskaaaaaaa");

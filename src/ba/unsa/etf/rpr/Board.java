@@ -171,7 +171,8 @@ public class Board {
                             }
                         }
                     } else {
-                        System.out.println("druge je boje!");
+                        System.out.println(" NIJE druge je boje!");
+                        break;
                     }
                 } else {
                     System.out.println("uspjesno pomjerena bez jedenja!!");
