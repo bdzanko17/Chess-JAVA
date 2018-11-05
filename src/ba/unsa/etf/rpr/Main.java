@@ -7,10 +7,11 @@ public class Main {
         Board tabla = new Board();
 
         try {
-            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "A3");
+            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "A4");
+            tabla.move(Rook.class,ChessPiece.Color.WHITE,"A2");
 
         }catch (Exception e){
-            System.out.println("greska");
+            System.out.println("greskaaaaaaa");
         }
 for(int i=0;i<tabla.tabla.length;i++){
     System.out.println(tabla.tabla[i].getPozicija());
