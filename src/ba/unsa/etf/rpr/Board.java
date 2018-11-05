@@ -39,6 +39,28 @@ public class Board {
         char slovoStarePozicije = staraPozicija.charAt(0);
         char brojNoveP = novaPozicija.charAt(1);
         char brojStareP = staraPozicija.charAt(1);
+        char a;
+        char b;
+        if(slovoNovePozicije>slovoStarePozicije){
+            a=slovoStarePozicije;
+            b=slovoNovePozicije;
+        }else{
+            a=slovoNovePozicije;
+            b=slovoStarePozicije;
+        }
+        slovoStarePozicije=a;
+        slovoNovePozicije=b;
+
+        if(brojNoveP>brojStareP){
+            a=brojStareP;
+            b=brojNoveP;
+        }else {
+            a=brojNoveP;
+            b=brojStareP;
+        }
+        brojStareP=a;
+        brojNoveP=b;
+
         List<String> tacke = new ArrayList<>();
         boolean ima = false;
 
@@ -68,7 +90,7 @@ public class Board {
                     break;
                 }
             }
-            if (ima == true)
+            if (ima )
                 break;
         }
         return ima;
@@ -89,7 +111,6 @@ public class Board {
         tabla[6] = new Knight("G1", ChessPiece.Color.WHITE);
         tabla[7] = new Rook("H1", ChessPiece.Color.WHITE);
         for (int i = 8; i <= 23; i++) {
-
             if (i < 16) {
                 char x = (char) ('A' + counter++);
                 String s = x + Integer.toString(2);
@@ -127,7 +148,7 @@ public class Board {
                     staraPozicija = tabla[i].getPozicija();
                     tabla[i].move(position);
                     proslo = true;
-                    tabla[i].move(staraPozicija);
+                    tabla[i].move(staraPozicija);       /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                 } catch (Exception e) {
                     continue;
