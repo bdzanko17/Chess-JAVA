@@ -47,14 +47,19 @@ public class Board {
                 String x = slovoNovePozicije + Character.toString(slovo);
                 tacke.add(x);
             }
-        } else if (abs(brojNoveP-brojStareP)==0){
-            for(int i=slovoStarePozicije+1;i<slovoNovePozicije;i++){
-                String x=Character.toString((char)i)+Character.toString(brojNoveP);
+        } else if (abs(brojNoveP - brojStareP) == 0) {
+            for (int i = slovoStarePozicije + 1; i < slovoNovePozicije; i++) {
+                String x = Character.toString((char) i) + Character.toString(brojNoveP);
                 tacke.add(x);
             }
+        } else if (abs(brojNoveP - brojStareP) == abs(slovoNovePozicije - slovoStarePozicije)) {
+           for(int i=brojStareP+1;i<brojNoveP;i++){
+               String x = Character.toString(++slovoStarePozicije) + (char)i;
+               tacke.add(x);
+           }
         }
 
-            return tacke;
+        return tacke;
 
     }
 
