@@ -137,21 +137,24 @@ public class Board {
     }
 
     void move(Class type, ChessPiece.Color color, String position)
-            throws IllegalArgumentException, IllegalChessMoveException {
+            throws IllegalArgumentException, IllegalChessMoveException, CloneNotSupportedException {
         String staraPozicija="XD";
         boolean proslo = false;
         List<ChessPiece> figure;
 
         for (int i = 0; i < this.tabla.length; i++) {
+            ChessPiece pomocna=(ChessPiece)tabla[i].clone();
             if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
 
                 try {
                     staraPozicija = tabla[i].getPozicija();
-                    tabla[i].move(position);
+                    pomocna.move(position);
+                    /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                 } catch (Exception e) {
+                    continue;
 
-                                    }
+                }
 
 
 
@@ -168,18 +171,18 @@ public class Board {
                                 }
                             }
                         } else {
-                            System.out.println(" nije druge je boje!");
+                            System.out.println("druge je boje!");
                             throw new IllegalChessMoveException("nemoguc POTEZ SMETA TVOJA FIGURA");
                         }
                     } else {
                         System.out.println("uspjesno pomjerena bez jedenja!!");
-                        tabla[i].move(position);
                     }
 
                 if(daliimafiguraizmedjupozicija(tabla,position,staraPozicija)){
-                    tabla[i].move(staraPozicija);
                     System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
                     throw new IllegalChessMoveException("greska");
+                }else{
+                    tabla[i].move(position);
                 }
 
             }

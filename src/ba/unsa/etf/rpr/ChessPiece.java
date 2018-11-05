@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
 
-public abstract class ChessPiece {
+public abstract class ChessPiece implements Cloneable {
     public static enum Color {
         BLACK, WHITE
     }
@@ -36,6 +36,9 @@ public abstract class ChessPiece {
         } else throw new IllegalArgumentException();
 
     }
-
+     @Override
+    public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
 
 }
