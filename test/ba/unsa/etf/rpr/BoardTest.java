@@ -28,11 +28,16 @@ class BoardTest {
         Board b = new Board();
         assertDoesNotThrow(
             () -> {
-                b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
-                b.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
-                b.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
-                b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
-                b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "A4");
+                b.move(Rook.class, ChessPiece.Color.WHITE, "A2");
+                b.move(Knight.class, ChessPiece.Color.WHITE, "C3");
+                b.move(Pawn.class, ChessPiece.Color.WHITE, "G4");
+                b.move(Bishop.class, ChessPiece.Color.WHITE, "H3");
+                b.move(Bishop.class, ChessPiece.Color.WHITE, "E6");
+
+
+
+
             }
         );
     }

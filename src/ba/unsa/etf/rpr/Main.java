@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IllegalChessMoveException, CloneNotSupportedException {
         Board tabla = new Board();
 
-        System.out.println(tabla.daliimafiguraizmedjupozicija(tabla.tabla,"D2","G5"));
+        System.out.println(tabla.daliimafiguraizmedjupozicija(tabla.tabla,"E6","H3"));
 
 //        try {
 //            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");

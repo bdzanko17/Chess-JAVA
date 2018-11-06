@@ -107,7 +107,7 @@ public class Board {
 
          }
         }
-//        return tacke;
+        //return tacke;
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tacke.size(); j++) {
                 if (tabla[i].getPozicija().equals(tacke.get(j))) {
@@ -194,17 +194,19 @@ public class Board {
                         for (int j = 0; j < tabla.length; j++) {
                             if (tabla[j].getPozicija() == position) {
                                 tabla[j] = null;
+                                break;
                             }
                         }
                     } else {
                         System.out.println(" NIJE druge je boje!");
-                        break;
+                        throw new IllegalChessMoveException("greska");
+
                     }
                 } else {
                     System.out.println("uspjesno pomjerena bez jedenja!!");
                 }
                 System.out.println(type);
-                if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija)) {
+                if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija)&&type!=Knight.class) {
                     System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
                     throw new IllegalChessMoveException("greska");
                 } else {
