@@ -25,9 +25,10 @@ public class Board {
     public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla, ChessPiece figura, String odrediste) {
         boolean drugeBoje = false;
         for (int i = 0; i < tabla.length; i++) {
-            if (tabla[i].getPozicija() == odrediste) {
+            if (tabla[i].getPozicija().equals(odrediste)) {
                 if (tabla[i].getBoja() != figura.getBoja()) {
                     drugeBoje = true;
+                    System.out.println("xd");
                 }
             }
         }
@@ -81,31 +82,31 @@ public class Board {
                 tacke.add(x);
             }
         } else if (abs(brojNoveP - brojStareP) == abs(slovoNovePozicije - slovoStarePozicije)) {
-         if(brojNoveP1<brojStareP1&&slovoNovePozicije1<slovoStarePozicije1){
-             for(int i=brojNoveP1+1;i<brojStareP1;i++){
-                 String x =Character.toString(++slovoNovePozicije1) + (char)i;
-                 tacke.add(x);
+            if (brojNoveP1 < brojStareP1 && slovoNovePozicije1 < slovoStarePozicije1) {
+                for (int i = brojNoveP1 + 1; i < brojStareP1; i++) {
+                    String x = Character.toString(++slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
 
-             }
-         }else if(slovoNovePozicije1>slovoStarePozicije1&&brojNoveP1>brojStareP1){
-                 for(int i=brojNoveP1-1;i>brojStareP1;i--){
-                     String x =Character.toString(--slovoNovePozicije1) + (char)i;
-                     tacke.add(x);
-                 }
+                }
+            } else if (slovoNovePozicije1 > slovoStarePozicije1 && brojNoveP1 > brojStareP1) {
+                for (int i = brojNoveP1 - 1; i > brojStareP1; i--) {
+                    String x = Character.toString(--slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+                }
 
-         }else if(slovoNovePozicije1<slovoStarePozicije1&&brojNoveP1>brojStareP1){
-             for(int i=brojNoveP1-1;i>brojStareP1;i--){
-                 String x =Character.toString(++slovoNovePozicije1) + (char)i;
-                 tacke.add(x);
-             }
+            } else if (slovoNovePozicije1 < slovoStarePozicije1 && brojNoveP1 > brojStareP1) {
+                for (int i = brojNoveP1 - 1; i > brojStareP1; i--) {
+                    String x = Character.toString(++slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+                }
 
-         }else if(slovoNovePozicije1>slovoStarePozicije1&&brojNoveP1<brojStareP1){
-             for(int i=brojNoveP1+1;i<brojStareP1;i++){
-                 String x =Character.toString(--slovoNovePozicije1) + (char)i;
-                 tacke.add(x);
-             }
+            } else if (slovoNovePozicije1 > slovoStarePozicije1 && brojNoveP1 < brojStareP1) {
+                for (int i = brojNoveP1 + 1; i < brojStareP1; i++) {
+                    String x = Character.toString(--slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+                }
 
-         }
+            }
         }
         //return tacke;
         for (int i = 0; i < tabla.length; i++) {
@@ -166,6 +167,7 @@ public class Board {
         String staraPozicija;
         boolean proslo = false;
         List<ChessPiece> figure;
+       position=position.toUpperCase();
 
         for (int i = 0; i < this.tabla.length; i++) {
             ChessPiece pomocna = (ChessPiece) tabla[i].clone();
@@ -192,7 +194,7 @@ public class Board {
                         System.out.println("pojedena figura");
                         tabla[i].move(position);
                         for (int j = 0; j < tabla.length; j++) {
-                            if (tabla[j].getPozicija() == position) {
+                            if (tabla[j].getPozicija().equals(position)) {
                                 tabla[j] = null;
                                 break;
                             }
@@ -206,7 +208,7 @@ public class Board {
                     System.out.println("uspjesno pomjerena bez jedenja!!");
                 }
                 System.out.println(type);
-                if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija)&&type!=Knight.class) {
+                if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
                     System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
                     throw new IllegalChessMoveException("greska");
                 } else {
