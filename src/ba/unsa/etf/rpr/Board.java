@@ -184,7 +184,6 @@ public class Board {
 
                 try {
                     pomocna.move(position);
-                    System.out.println(tabla[i].getPozicija());
                     /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                 } catch (Exception e) {
@@ -216,12 +215,10 @@ public class Board {
                 } else {
                     System.out.println("uspjesno pomjerena bez jedenja!!");
                 }
-                System.out.println(type);
                 if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
                     System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
                     throw new IllegalChessMoveException("greska");
                 } else {
-                    System.out.println("XD");
                     if(tabla[i]!=null){
                     tabla[i].move(position);
                 }
@@ -240,16 +237,28 @@ public class Board {
             throw new IllegalArgumentException();
         oldPosition= oldPosition.toUpperCase();
         newPosition=newPosition.toUpperCase();
+        boolean ima=false;
         for(int i=0;i<tabla.length;i++){
             if(tabla[i]!=null){
                 if(tabla[i].getPozicija().equals(oldPosition)){
-                    this.move(tabla[i].getClass(),tabla[i].getBoja(),newPosition);
-                }else{
-                    throw new IllegalChessMoveException("pogreskaaa");
+                    ima=true;
                 }
             }
         }
+        for(int i=0;i<tabla.length;i++){
+            if(tabla[i]!=null){
+                if(tabla[i].getPozicija().equals(oldPosition)){
+                    System.out.println(tabla[i].getClass());
+                    this.move(tabla[i].getClass(),tabla[i].getBoja(),newPosition);
+                    break;
+                }
+            }
 
+        }
+        if(ima==false){
+            throw new IllegalArgumentException("greskica");
+        }
     }
+
 
 }

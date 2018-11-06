@@ -4,11 +4,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IllegalChessMoveException, CloneNotSupportedException {
-        Board b = new Board(); b.move(Knight.class, ChessPiece.Color.WHITE,"F3");
+        Board b = new Board();
 
-          b.move(Knight.class, ChessPiece.Color.WHITE, "E5");
-          b.move(Knight.class, ChessPiece.Color.WHITE, "F7");
-
+       b.move("A4","A3");
 
 //        try {
 //            tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
