@@ -235,11 +235,20 @@ public class Board {
 
     }
 
-    void move (String oldPosition,String newPosition)throws IllegalArgumentException{
+    void move (String oldPosition,String newPosition) throws IllegalArgumentException, IllegalChessMoveException, CloneNotSupportedException {
         if (oldPosition.length() > 2 || oldPosition.length() <= 1||newPosition.length() > 2 || newPosition.length() <= 1)
             throw new IllegalArgumentException();
         oldPosition= oldPosition.toUpperCase();
         newPosition=newPosition.toUpperCase();
+        for(int i=0;i<tabla.length;i++){
+            if(tabla[i]!=null){
+                if(tabla[i].getPozicija().equals(oldPosition)){
+                    this.move(tabla[i].getClass(),tabla[i].getBoja(),newPosition);
+                }else{
+                    throw new IllegalChessMoveException("pogreskaaa");
+                }
+            }
+        }
 
     }
 
