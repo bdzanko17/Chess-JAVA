@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.omg.CORBA.CODESET_INCOMPATIBLE;
+import sun.rmi.runtime.NewThreadAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,12 @@ public class Board {
     public static boolean daliImaNaOdredistuFigure(ChessPiece[] tabla, String odrediste) {
         boolean ima = false;
         for (int i = 0; i < tabla.length; i++) {
+            if(tabla[i]!=null){
             if (tabla[i].getPozicija().equals(odrediste)) {
                 ima = true;
                 break;
             }
+        }
         }
         return ima;
     }
@@ -25,12 +28,14 @@ public class Board {
     public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla, ChessPiece figura, String odrediste) {
         boolean drugeBoje = false;
         for (int i = 0; i < tabla.length; i++) {
+            if(tabla[i]!=null){
             if (tabla[i].getPozicija().equals(odrediste)) {
                 if (tabla[i].getBoja() != figura.getBoja()) {
                     drugeBoje = true;
                     System.out.println("xd");
                 }
             }
+        }
         }
         return drugeBoje;
     }
@@ -110,6 +115,7 @@ public class Board {
         }
         //return tacke;
         for (int i = 0; i < tabla.length; i++) {
+            if(tabla[i]!=null){
             for (int j = 0; j < tacke.size(); j++) {
                 if (tabla[i].getPozicija().equals(tacke.get(j))) {
                     ima = true;
@@ -118,6 +124,7 @@ public class Board {
             }
             if (ima)
                 break;
+        }
         }
         return ima;
 
@@ -170,6 +177,7 @@ public class Board {
        position=position.toUpperCase();
 
         for (int i = 0; i < this.tabla.length; i++) {
+            if(tabla[i]!=null){
             ChessPiece pomocna = (ChessPiece) tabla[i].clone();
             staraPozicija = tabla[i].getPozicija();
             if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
@@ -192,12 +200,13 @@ public class Board {
                     if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
                         System.out.println("druge je boje pojestiii");
                         System.out.println("pojedena figura");
-                        tabla[i].move(position);
                         for (int j = 0; j < tabla.length; j++) {
+                            if(tabla[j]!=null){
                             if (tabla[j].getPozicija().equals(position)) {
-                                tabla[j] = null;
-                                break;
+                                tabla[j]=null;
+                              break;
                             }
+                        }
                         }
                     } else {
                         System.out.println(" NIJE druge je boje!");
@@ -213,12 +222,15 @@ public class Board {
                     throw new IllegalChessMoveException("greska");
                 } else {
                     System.out.println("XD");
+                    if(tabla[i]!=null){
                     tabla[i].move(position);
+                }
                 }
 
             }
             if (proslo) break;
 
+        }
         }
 
     }
