@@ -40,7 +40,9 @@ public abstract class ChessPiece implements Cloneable {
     }
      @Override
     public Object clone() throws CloneNotSupportedException {
-            return super.clone();
+
+        return  (ChessPiece)super.clone();
+
         }
 
 }

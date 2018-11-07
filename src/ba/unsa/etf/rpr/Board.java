@@ -260,25 +260,30 @@ public class Board {
         }
     }
 
-    public boolean isCheck(ChessPiece.Color boja){
+    public boolean isCheck(ChessPiece.Color boja) throws CloneNotSupportedException {
         String pozicijaKralja="XD";
 
-        ChessPiece[] benjo=tabla.clone();
+        ChessPiece[] benjo=new ChessPiece[32];
+
+        for(int i=0;i<benjo.length;i++){
+            if(tabla[i]!=null)
+            benjo[i]=(ChessPiece)tabla[i].clone();
+        }
 
         for(int i=0;i<tabla.length;i++){
-            if(tabla[i]!=null){
-            if(tabla[i].getClass()==King.class&&tabla[i].getBoja()==boja){
-                pozicijaKralja=tabla[i].getPozicija();
+            if(benjo[i]!=null){
+            if(benjo[i].getClass()==King.class&&benjo[i].getBoja()==boja){
+                pozicijaKralja=benjo[i].getPozicija();
                 break;
             }
         }
         }
         boolean uspjelo=false;
         for(int i=0;i<tabla.length;i++){
-            if(tabla[i]!=null){
-                if(tabla[i].getBoja()!=boja){
+            if(benjo[i]!=null){
+                if(benjo[i].getBoja()!=boja){
                     try{
-                        tabla[i].move(pozicijaKralja);
+                        benjo[i].move(pozicijaKralja);
                         uspjelo=true;
                     }catch (Exception e){
                         System.out.println("ne moguce");
