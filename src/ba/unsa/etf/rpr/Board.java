@@ -39,6 +39,81 @@ public class Board {
         }
         return drugeBoje;
     }
+    public static List<String> pomocna(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
+        char slovoNovePozicije = novaPozicija.charAt(0);
+        char slovoStarePozicije = staraPozicija.charAt(0);
+        char brojNoveP = novaPozicija.charAt(1);
+        char brojStareP = staraPozicija.charAt(1);
+
+        char slovoNovePozicije1 = novaPozicija.charAt(0);
+        char slovoStarePozicije1 = staraPozicija.charAt(0);
+        char brojNoveP1 = novaPozicija.charAt(1);
+        char brojStareP1 = staraPozicija.charAt(1);
+        char a;
+        char b;
+        if (slovoNovePozicije > slovoStarePozicije) {
+            a = slovoStarePozicije;
+            b = slovoNovePozicije;
+        } else {
+            a = slovoNovePozicije;
+            b = slovoStarePozicije;
+        }
+        slovoStarePozicije = a;
+        slovoNovePozicije = b;
+
+        if (brojNoveP > brojStareP) {
+            a = brojStareP;
+            b = brojNoveP;
+        } else {
+            a = brojNoveP;
+            b = brojStareP;
+        }
+        brojStareP = a;
+        brojNoveP = b;
+
+        List<String> tacke = new ArrayList<>();
+        boolean ima = false;
+
+        if (abs(slovoNovePozicije - slovoStarePozicije) == 0) {//za isto slovo tacke
+            for (int i = brojStareP + 1; i < brojNoveP; i++) { //mora se naci veci
+                char slovo = (char) i;
+                String x = slovoNovePozicije + Character.toString(slovo);
+                tacke.add(x);
+            }
+        } else if (abs(brojNoveP - brojStareP) == 0) {
+            for (int i = slovoStarePozicije + 1; i < slovoNovePozicije; i++) {
+                String x = Character.toString((char) i) + Character.toString(brojNoveP);
+                tacke.add(x);
+            }
+        } else if (abs(brojNoveP - brojStareP) == abs(slovoNovePozicije - slovoStarePozicije)) {
+            if (brojNoveP1 < brojStareP1 && slovoNovePozicije1 < slovoStarePozicije1) {
+                for (int i = brojNoveP1 + 1; i < brojStareP1; i++) {
+                    String x = Character.toString(++slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+
+                }
+            } else if (slovoNovePozicije1 > slovoStarePozicije1 && brojNoveP1 > brojStareP1) {
+                for (int i = brojNoveP1 - 1; i > brojStareP1; i--) {
+                    String x = Character.toString(--slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+                }
+
+            } else if (slovoNovePozicije1 < slovoStarePozicije1 && brojNoveP1 > brojStareP1) {
+                for (int i = brojNoveP1 - 1; i > brojStareP1; i--) {
+                    String x = Character.toString(++slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+                }
+
+            } else if (slovoNovePozicije1 > slovoStarePozicije1 && brojNoveP1 < brojStareP1) {
+                for (int i = brojNoveP1 + 1; i < brojStareP1; i++) {
+                    String x = Character.toString(--slovoNovePozicije1) + (char) i;
+                    tacke.add(x);
+                }
+
+            }
+        }
+        return tacke;
+    }
 
     public static boolean daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
         char slovoNovePozicije = novaPozicija.charAt(0);
@@ -220,6 +295,11 @@ public class Board {
                         throw new IllegalChessMoveException("greska");
                     } else {
                         if (tabla[i] != null) {
+                            if(DaliPijunJedePravo(tabla[i].getPozicija(),position)&&tabla[i].getClass()==Pawn.class&&){
+                                System.out.println(tabla[i].getPozicija()+position);
+                                throw new IllegalChessMoveException("greska");
+                            }
+                            else
                             tabla[i].move(position);
                         }
                     }
@@ -286,7 +366,6 @@ public class Board {
                         ChessPiece pomocna=(ChessPiece)benjo[i].clone();
                         pomocna.move(pozicijaKralja);
                         uspjelo=true;
-                        System.out.println(benjo[i].getClass());
                         if(benjo[i].getClass()==Pawn.class){
                        if(DaliPijunJedePravo(pozicijaKralja,benjo[i].getPozicija())){
                            System.out.println("PRAVO");
