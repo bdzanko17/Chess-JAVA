@@ -272,6 +272,11 @@ public class Board {
 
                         System.out.println("Ima figura");
                         if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
+                            if(tabla[i].getClass()==Pawn.class){
+                                if(DaliPijunJedePravo(position,tabla[i].getPozicija())){
+                                    throw  new IllegalChessMoveException("greska");
+                                }
+                            }
                             System.out.println("druge je boje pojestiii");
                             System.out.println("pojedena figura");
                             for (int j = 0; j < tabla.length; j++) {
@@ -295,11 +300,6 @@ public class Board {
                         throw new IllegalChessMoveException("greska");
                     } else {
                         if (tabla[i] != null) {
-                            if(DaliPijunJedePravo(tabla[i].getPozicija(),position)&&tabla[i].getClass()==Pawn.class&&){
-                                System.out.println(tabla[i].getPozicija()+position);
-                                throw new IllegalChessMoveException("greska");
-                            }
-                            else
                             tabla[i].move(position);
                         }
                     }
