@@ -285,6 +285,9 @@ public class Board {
                     try{
                         benjo[i].move(pozicijaKralja);
                         uspjelo=true;
+                        if(benjo[i].getClass()==Pawn.class){
+
+                        }
                     }catch (Exception e){
                         System.out.println("ne moguce");
                         uspjelo=false;
@@ -294,6 +297,10 @@ public class Board {
             }
         }
         return uspjelo;
+    }
+
+    public static boolean DaliPijunJedeukoso(ChessPiece[] tabla,){
+
     }
 
 
