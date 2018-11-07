@@ -340,16 +340,40 @@ public class Board {
 
     public boolean isCheck(ChessPiece.Color boja) throws CloneNotSupportedException {
         String pozicijaKralja="XD";
-
+        ChessPiece figuraPomocna=null;
+        int pozicijaKinga=0;
+        boolean dal=false;
         for(int i=0;i<tabla.length;i++){
             if(tabla[i]!=null){
             if(tabla[i].getClass()==King.class&&tabla[i].getBoja()==boja){
                 pozicijaKralja=tabla[i].getPozicija();
+                pozicijaKinga=i;
+                figuraPomocna=(ChessPiece)tabla[i].clone();
+                break;
             }
         }
         }
+        ChessPiece probaj;
+        boolean proslo=false;
         System.out.println(pozicijaKralja);
-        return false;
+        for(int i=0;i<tabla.length;i++){
+            if(tabla[i]!=null){
+                probaj=(ChessPiece)tabla[i].clone();
+                if(tabla[i].getBoja()!=boja){
+                    try{
+                        move(tabla[i].getPozicija(),pozicijaKralja);
+                        proslo=true;
+                        tabla[pozicijaKinga]=figuraPomocna;
+                        tabla[i]=probaj;
+                        break;
+                    }catch (Exception e){
+
+                    }
+                }
+            }
+        }
+
+        return proslo;
 
 
     }
