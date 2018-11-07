@@ -193,12 +193,10 @@ public class Board {
             if (tabla[i] != null) {
                 for (int j = 0; j < tacke.size(); j++) {
                     if (tabla[i].getPozicija().equals(tacke.get(j))) {
-                        ima = true;
-                        break;
+                       return true;
                     }
                 }
-                if (ima)
-                    break;
+
             }
         }
         return ima;
@@ -343,45 +341,19 @@ public class Board {
     public boolean isCheck(ChessPiece.Color boja) throws CloneNotSupportedException {
         String pozicijaKralja="XD";
 
-        ChessPiece[] benjo=new ChessPiece[32];
-
-        for(int i=0;i<benjo.length;i++){
-            if(tabla[i]!=null)
-            benjo[i]=(ChessPiece)tabla[i].clone();
-        }
-
         for(int i=0;i<tabla.length;i++){
-            if(benjo[i]!=null){
-            if(benjo[i].getClass()==King.class&&benjo[i].getBoja()==boja){
-                pozicijaKralja=benjo[i].getPozicija();
-                break;
+            if(tabla[i]!=null){
+            if(tabla[i].getClass()==King.class&&tabla[i].getBoja()==boja){
+                pozicijaKralja=tabla[i].getPozicija();
             }
         }
         }
-        boolean uspjelo=false;
-        for(int i=0;i<tabla.length;i++){
-            if(benjo[i]!=null){
-                if(benjo[i].getBoja()!=boja){
-                    try{
-                        ChessPiece pomocna=(ChessPiece)benjo[i].clone();
-                        pomocna.move(pozicijaKralja);
-                        uspjelo=true;
-                        if(benjo[i].getClass()==Pawn.class){
-                       if(DaliPijunJedePravo(pozicijaKralja,benjo[i].getPozicija())){
-                           System.out.println("PRAVO");
-                           return false;
-                       }
-                        }
-                    }catch (Exception e){
-                        System.out.println("ne moguce");
-                        uspjelo=false;
-                    }
-                }
-                if(uspjelo)break;
-            }
-        }
-        return uspjelo;
+        System.out.println(pozicijaKralja);
+        return false;
+
+
     }
+
 
     public static boolean DaliPijunJedePravo(String pozicija_kralja,String pozicija_pijuna){
         char slovoKralja=pozicija_kralja.charAt(0);

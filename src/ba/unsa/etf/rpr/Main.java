@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IllegalChessMoveException, CloneNotSupportedException {
-        Board b = new Board();
-        b.move("C2","A4");
+     Pawn pijun=new Pawn("E6", ChessPiece.Color.WHITE);
+     pijun.move("C8");
 }
         }
 

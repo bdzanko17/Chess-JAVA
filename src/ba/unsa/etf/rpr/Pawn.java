@@ -12,12 +12,21 @@ public class Pawn extends ChessPiece {
 
         if (boja == Color.WHITE) {
             if ((slovo == slovo2 && abs(broj2 - broj) == 1 && broj2 > broj) || (abs(slovo - slovo2) == 1 && broj2 > broj && abs(broj - broj2) == 1)
-                    || (slovo == slovo2 && abs(broj2 - broj) == 2 && broj2 > broj)) x = true;
+                    || (slovo == slovo2 && abs(broj2 - broj) == 2 && broj2 > broj)) {
+                System.out.println(slovo2-slovo);
+                if(abs(slovo-slovo2)>1&&abs(broj2-broj)>1){
+                    x=false;
+                }else
+                    x = true;
+            }
         } else if (boja == Color.BLACK) {
             if ((slovo == slovo2 && abs(broj2 - broj) == 1 && broj2 < broj) || (abs(slovo - slovo2) == 1 && broj2 < broj && abs(broj - broj2) == 1)
-                    || (slovo == slovo2 && abs(broj2 - broj) == 2 && broj2 < broj)) x = true;
-
-        }
+                    || (slovo == slovo2 && abs(broj2 - broj) == 2 && broj2 < broj)) {
+                if(abs(slovo-slovo2)>1&&abs(broj2-broj)>1){
+                    x=false;
+                }else
+                    x = true;            }
+            }
 
 
         return x;
