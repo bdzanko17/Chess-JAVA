@@ -283,10 +283,15 @@ public class Board {
             if(benjo[i]!=null){
                 if(benjo[i].getBoja()!=boja){
                     try{
-                        benjo[i].move(pozicijaKralja);
+                        ChessPiece pomocna=(ChessPiece)benjo[i].clone();
+                        pomocna.move(pozicijaKralja);
                         uspjelo=true;
+                        System.out.println(benjo[i].getClass());
                         if(benjo[i].getClass()==Pawn.class){
-
+                       if(DaliPijunJedePravo(pozicijaKralja,benjo[i].getPozicija())){
+                           System.out.println("PRAVO");
+                           return false;
+                       }
                         }
                     }catch (Exception e){
                         System.out.println("ne moguce");
@@ -299,8 +304,16 @@ public class Board {
         return uspjelo;
     }
 
-    public static boolean DaliPijunJedeukoso(ChessPiece[] tabla,){
+    public static boolean DaliPijunJedePravo(String pozicija_kralja,String pozicija_pijuna){
+        char slovoKralja=pozicija_kralja.charAt(0);
+        char slovoPijuna=pozicija_pijuna.charAt(0);
+        char brojKralja=pozicija_kralja.charAt(1);
+        char brojPijuna=pozicija_pijuna.charAt(1);
 
+        if (abs(slovoKralja - slovoPijuna) == 0&&abs(brojKralja - brojPijuna) != 0||
+                abs(slovoKralja - slovoPijuna) != 0&&abs(brojKralja - brojPijuna) == 0        ){
+            return true;
+        }else return false;
     }
 
 
