@@ -48,7 +48,7 @@ class BoardTest {
         } catch(Exception e) {
             // Do nothing
         }
-//        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
+        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
     }
 
     @Test
@@ -69,7 +69,7 @@ class BoardTest {
         } catch(Exception e) {
             // Do nothing
         }
-//        b.isCheck(ChessPiece.Color.BLACK);
+        b.isCheck(ChessPiece.Color.BLACK);
         assertDoesNotThrow(
                 () -> {
                     b.move(Queen.class, ChessPiece.Color.WHITE, "D3");
@@ -91,7 +91,7 @@ class BoardTest {
         } catch(Exception e) {
             // Do nothing
         }
-//        assertFalse(b.isCheck(ChessPiece.Color.BLACK));
+        assertFalse(b.isCheck(ChessPiece.Color.BLACK));
     }
 
     @Test
@@ -113,7 +113,7 @@ class BoardTest {
         } catch(Exception e) {
             // Do nothing
         }
-//        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
+        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
     }
 
     @Test
@@ -221,7 +221,7 @@ class BoardTest {
         } catch(Exception e) {
             // Do nothing
         }
-//        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
+        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
     }
 
     @Test

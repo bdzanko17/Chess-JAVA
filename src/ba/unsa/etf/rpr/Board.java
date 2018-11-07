@@ -261,7 +261,34 @@ public class Board {
     }
 
     public boolean isCheck(ChessPiece.Color boja){
+        String pozicijaKralja="XD";
 
+        ChessPiece[] benjo=tabla.clone();
+
+        for(int i=0;i<tabla.length;i++){
+            if(tabla[i]!=null){
+            if(tabla[i].getClass()==King.class&&tabla[i].getBoja()==boja){
+                pozicijaKralja=tabla[i].getPozicija();
+                break;
+            }
+        }
+        }
+        boolean uspjelo=false;
+        for(int i=0;i<tabla.length;i++){
+            if(tabla[i]!=null){
+                if(tabla[i].getBoja()!=boja){
+                    try{
+                        tabla[i].move(pozicijaKralja);
+                        uspjelo=true;
+                    }catch (Exception e){
+                        System.out.println("ne moguce");
+                        uspjelo=false;
+                    }
+                }
+                if(uspjelo)break;
+            }
+        }
+        return uspjelo;
     }
 
 
