@@ -15,12 +15,12 @@ public class Board {
     public static boolean daliImaNaOdredistuFigure(ChessPiece[] tabla, String odrediste) {
         boolean ima = false;
         for (int i = 0; i < tabla.length; i++) {
-            if(tabla[i]!=null){
-            if (tabla[i].getPozicija().equals(odrediste)) {
-                ima = true;
-                break;
+            if (tabla[i] != null) {
+                if (tabla[i].getPozicija().equals(odrediste)) {
+                    ima = true;
+                    break;
+                }
             }
-        }
         }
         return ima;
     }
@@ -28,14 +28,14 @@ public class Board {
     public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla, ChessPiece figura, String odrediste) {
         boolean drugeBoje = false;
         for (int i = 0; i < tabla.length; i++) {
-            if(tabla[i]!=null){
-            if (tabla[i].getPozicija().equals(odrediste)) {
-                if (tabla[i].getBoja() != figura.getBoja()) {
-                    drugeBoje = true;
-                    System.out.println("xd");
+            if (tabla[i] != null) {
+                if (tabla[i].getPozicija().equals(odrediste)) {
+                    if (tabla[i].getBoja() != figura.getBoja()) {
+                        drugeBoje = true;
+                        System.out.println("xd");
+                    }
                 }
             }
-        }
         }
         return drugeBoje;
     }
@@ -115,16 +115,16 @@ public class Board {
         }
         //return tacke;
         for (int i = 0; i < tabla.length; i++) {
-            if(tabla[i]!=null){
-            for (int j = 0; j < tacke.size(); j++) {
-                if (tabla[i].getPozicija().equals(tacke.get(j))) {
-                    ima = true;
-                    break;
+            if (tabla[i] != null) {
+                for (int j = 0; j < tacke.size(); j++) {
+                    if (tabla[i].getPozicija().equals(tacke.get(j))) {
+                        ima = true;
+                        break;
+                    }
                 }
+                if (ima)
+                    break;
             }
-            if (ima)
-                break;
-        }
         }
         return ima;
 
@@ -174,90 +174,94 @@ public class Board {
         String staraPozicija;
         boolean proslo = false;
         List<ChessPiece> figure;
-       position=position.toUpperCase();
+        position = position.toUpperCase();
 
         for (int i = 0; i < this.tabla.length; i++) {
-            if(tabla[i]!=null){
-            ChessPiece pomocna = (ChessPiece) tabla[i].clone();
-            staraPozicija = tabla[i].getPozicija();
-            if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
+            if (tabla[i] != null) {
+                ChessPiece pomocna = (ChessPiece) tabla[i].clone();
+                staraPozicija = tabla[i].getPozicija();
+                if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
 
-                try {
-                    pomocna.move(position);
-                    /*moze se pomjeriti ali da vidimo da li smeta šta*/
+                    try {
+                        pomocna.move(position);
+                        /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
-                } catch (Exception e) {
-                    continue;
-
-                }
-                proslo = true;
-
-
-                if (daliImaNaOdredistuFigure(tabla, position)) {
-
-                    System.out.println("Ima figura");
-                    if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
-                        System.out.println("druge je boje pojestiii");
-                        System.out.println("pojedena figura");
-                        for (int j = 0; j < tabla.length; j++) {
-                            if(tabla[j]!=null){
-                            if (tabla[j].getPozicija().equals(position)) {
-                                tabla[j]=null;
-                              break;
-                            }
-                        }
-                        }
-                    } else {
-                        System.out.println(" NIJE druge je boje!");
-                        throw new IllegalChessMoveException("greska");
+                    } catch (Exception e) {
+                        continue;
 
                     }
-                } else {
-                    System.out.println("uspjesno pomjerena bez jedenja!!");
+                    proslo = true;
+
+
+                    if (daliImaNaOdredistuFigure(tabla, position)) {
+
+                        System.out.println("Ima figura");
+                        if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
+                            System.out.println("druge je boje pojestiii");
+                            System.out.println("pojedena figura");
+                            for (int j = 0; j < tabla.length; j++) {
+                                if (tabla[j] != null) {
+                                    if (tabla[j].getPozicija().equals(position)) {
+                                        tabla[j] = null;
+                                        break;
+                                    }
+                                }
+                            }
+                        } else {
+                            System.out.println(" NIJE druge je boje!");
+                            throw new IllegalChessMoveException("greska");
+
+                        }
+                    } else {
+                        System.out.println("uspjesno pomjerena bez jedenja!!");
+                    }
+                    if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
+                        System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
+                        throw new IllegalChessMoveException("greska");
+                    } else {
+                        if (tabla[i] != null) {
+                            tabla[i].move(position);
+                        }
+                    }
+
                 }
-                if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
-                    System.out.println("ne moguce odigrati potez IMA FIGURA ISPRED");
-                    throw new IllegalChessMoveException("greska");
-                } else {
-                    if(tabla[i]!=null){
-                    tabla[i].move(position);
-                }
-                }
+                if (proslo) break;
 
             }
-            if (proslo) break;
-
-        }
         }
 
     }
 
-    void move (String oldPosition,String newPosition) throws IllegalArgumentException, IllegalChessMoveException, CloneNotSupportedException {
-        if (oldPosition.length() > 2 || oldPosition.length() <= 1||newPosition.length() > 2 || newPosition.length() <= 1)
+    void move(String oldPosition, String newPosition) throws IllegalArgumentException, IllegalChessMoveException, CloneNotSupportedException {
+        if (oldPosition.length() > 2 || oldPosition.length() <= 1 || newPosition.length() > 2 || newPosition.length() <= 1)
             throw new IllegalArgumentException();
-        oldPosition= oldPosition.toUpperCase();
-        newPosition=newPosition.toUpperCase();
-        boolean ima=false;
-        for(int i=0;i<tabla.length;i++){
-            if(tabla[i]!=null){
-                if(tabla[i].getPozicija().equals(oldPosition)){
-                    ima=true;
+        oldPosition = oldPosition.toUpperCase();
+        newPosition = newPosition.toUpperCase();
+        boolean ima = false;
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i] != null) {
+                if (tabla[i].getPozicija().equals(oldPosition)) {
+                    ima = true;
                 }
             }
         }
-        for(int i=0;i<tabla.length;i++){
-            if(tabla[i]!=null){
-                if(tabla[i].getPozicija().equals(oldPosition)){
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i] != null) {
+                if (tabla[i].getPozicija().equals(oldPosition)) {
                     System.out.println(tabla[i].getClass());
-                    this.move(tabla[i].getClass(),tabla[i].getBoja(),newPosition);
+                    this.move(tabla[i].getClass(), tabla[i].getBoja(), newPosition);
                     break;
                 }
             }
 
         }
-        if(ima==false){
+        if (!ima) {
             throw new IllegalArgumentException("greskica");
         }
+    }
+
+    public boolean isCheck(ChessPiece.Color boja){
+
     }
 
 

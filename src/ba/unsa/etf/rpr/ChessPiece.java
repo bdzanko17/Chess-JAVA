@@ -28,6 +28,7 @@ public abstract class ChessPiece implements Cloneable {
     }
 
     ChessPiece(String pozicija, Color boja) throws IllegalArgumentException {
+        if(pozicija==null)throw new IllegalArgumentException();
 
         pozicija = pozicija.toUpperCase();
         if (pozicija.length() > 2 || pozicija.length() <= 1) throw new IllegalArgumentException();
