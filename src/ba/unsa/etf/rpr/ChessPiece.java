@@ -22,11 +22,6 @@ public abstract class ChessPiece implements Cloneable {
 
     public abstract Color getBoja();
 
-    ChessPiece() {
-        this.pozicija = "prazno polje";
-        this.boja = Color.WHITE;
-    }
-
     ChessPiece(String pozicija, Color boja) throws IllegalArgumentException {
         if(pozicija==null)throw new IllegalArgumentException();
 
