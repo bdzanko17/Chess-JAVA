@@ -258,24 +258,22 @@ public class Board {
 
                     try {
                         pomocna.move(position);
+                        System.out.println("XD");
+                        proslo = true;
+
                         /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                     } catch (Exception e) {
+                        proslo=false;
                         continue;
 
                     }
-                    proslo = true;
 
 
                     if (daliImaNaOdredistuFigure(tabla, position)) {
 
                         System.out.println("Ima figura");
                         if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
-                            if (tabla[i].getClass() == Pawn.class) {
-                                if (DaliPijunJedePravo(position, tabla[i].getPozicija())) {
-                                    throw new IllegalChessMoveException("greska");
-                                }
-                            }
                             System.out.println("druge je boje pojestiii");
                             System.out.println("pojedena figura");
                             for (int j = 0; j < tabla.length; j++) {
@@ -307,6 +305,9 @@ public class Board {
                 if (proslo) break;
 
             }
+        }
+        if(proslo==false){
+            throw new IllegalChessMoveException("Greska");
         }
 
     }
