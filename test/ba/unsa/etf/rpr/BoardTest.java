@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoardTest {
     @Test
         // Is the board usable after isCheck
-    void someLegalMoves() {
+    void someLegalMoves() throws CloneNotSupportedException {
         Board b = new Board();
-//        boolean no = b.isCheck(ChessPiece.Color.WHITE);
+        boolean no = b.isCheck(ChessPiece.Color.WHITE);
         assertDoesNotThrow(
                 () -> {
                     b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
@@ -45,7 +45,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -66,7 +66,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F6");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F8");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         b.isCheck(ChessPiece.Color.BLACK);
@@ -88,7 +88,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
             b.move(Queen.class, ChessPiece.Color.WHITE, "E2");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         assertFalse(b.isCheck(ChessPiece.Color.BLACK));
@@ -110,7 +110,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F6");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F8");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -164,8 +164,8 @@ class BoardTest {
                     b.move("E2", "E4");
                     b.move("E4", "E5");
                     b.move("E5", "E6");
-                    b.move("E6", "C8");
-
+                    b.move("E6", "D7");
+                    b.move("D7", "C8");
                 }
         );
     }
@@ -179,7 +179,7 @@ class BoardTest {
             b.move("E4", "E5");
             b.move("E5", "E6");
             b.move("E6", "D7");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -196,7 +196,7 @@ class BoardTest {
             b.move("E6", "D7");
             b.move("D7", "C8");
             b.move("D1", "E2");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         assertFalse(b.isCheck(ChessPiece.Color.BLACK));
@@ -218,7 +218,7 @@ class BoardTest {
             b.move("F5", "F6");
             b.move("F6", "E7");
             b.move("E7", "F8");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -255,7 +255,7 @@ class BoardTest {
             b.move("E6", "D7");
             b.move("D7", "C8");
             b.move("D1", "E2");
-        } catch (Exception e) {
+        } catch(Exception e) {
             // Do nothing
         }
         b.isCheck(ChessPiece.Color.BLACK);
