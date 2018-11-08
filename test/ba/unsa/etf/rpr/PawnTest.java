@@ -14,5 +14,42 @@ class PawnTest {
         );
     }
 
+    @Test
+//pijun unazad
+    void move2() {
+        Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
+        assertThrows(IllegalChessMoveException.class,
+                () -> p.move("E1")
+        );
+
+
+    }
+
+    @Test
+        //pijun naprijed
+    void move3() {
+        Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
+        assertThrows(IllegalChessMoveException.class,
+                () -> p.move("E8")
+        );
+    }
+    @Test
+        //pijun ukoso
+    void move4() {
+        Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
+        assertThrows(IllegalChessMoveException.class,
+                () -> p.move("G4")
+        );
+    }
+    @Test
+        //pijun ukoso dva polja !! ne moze
+    void move5() {
+        Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
+        assertThrows(IllegalChessMoveException.class,
+                () -> p.move("G4")
+        );
+    }
+
+
 
 }

@@ -320,6 +320,7 @@ public class Board {
     void move(String oldPosition, String newPosition) throws IllegalArgumentException, IllegalChessMoveException, CloneNotSupportedException {
         if (oldPosition.length() > 2 || oldPosition.length() <= 1 || newPosition.length() > 2 || newPosition.length() <= 1)
             throw new IllegalArgumentException();
+
         oldPosition = oldPosition.toUpperCase();
         newPosition = newPosition.toUpperCase();
         boolean ima = false;
