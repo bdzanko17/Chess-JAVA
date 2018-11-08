@@ -265,4 +265,38 @@ class BoardTest {
                 }
         );
     }
+
+
+    @Test
+    void pijunJedePravo() throws IllegalChessMoveException, CloneNotSupportedException {
+        Board tabla=new Board();
+        assertThrows(IllegalChessMoveException.class,
+                () -> {
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E7");
+
+
+                }
+
+        );
+    }
+
+    @Test
+    void pijunJedeUkosoDvije() throws IllegalChessMoveException, CloneNotSupportedException {
+        Board tabla=new Board();
+        assertThrows(IllegalChessMoveException.class,
+                () -> {
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
+                    tabla.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
+
+
+
+                }
+
+        );
+    }
 }

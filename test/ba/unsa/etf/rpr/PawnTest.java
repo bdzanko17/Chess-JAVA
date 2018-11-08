@@ -13,6 +13,30 @@ class PawnTest {
                 () -> p.move("E4")
         );
     }
+    @Test
+
+    void constructor1() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Pawn(null, ChessPiece.Color.WHITE)
+
+        );
+    }
+    @Test
+
+    void constructor2() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Pawn("", ChessPiece.Color.WHITE)
+
+        );
+    }
+    @Test
+
+    void constructor3() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Pawn("BEBEBEBE", ChessPiece.Color.WHITE)
+
+        );
+    }
 
     @Test
 //pijun unazad

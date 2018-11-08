@@ -276,7 +276,7 @@ public class Board {
                         if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
                             if (tabla[i].getClass() == Pawn.class) {
                                 if (DaliPijunJedePravo(position, tabla[i].getPozicija())) {
-                                    throw new IllegalChessMoveException("greska");
+                                    throw new IllegalChessMoveException("Ne moze jesti pravo");
                                 }
                             }
                             System.out.println("druge je boje pojestiii");
