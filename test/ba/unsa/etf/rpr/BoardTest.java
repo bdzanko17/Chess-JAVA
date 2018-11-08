@@ -13,13 +13,10 @@ class BoardTest {
         assertDoesNotThrow(
                 () -> {
                     b.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
-                    b.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
-                    b.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
-                    b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
-                    b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
-                    b.move(Queen.class, ChessPiece.Color.WHITE, "E2");
-                    b.move(Queen.class, ChessPiece.Color.WHITE, "E8");
-
+                    b.move(Bishop.class, ChessPiece.Color.WHITE, "A6");
+                    b.move(Knight.class, ChessPiece.Color.WHITE, "C3");
+                    b.move(King.class, ChessPiece.Color.WHITE, "E2");
+                    b.move(King.class, ChessPiece.Color.WHITE, "E3");
                 }
         );
     }
@@ -91,6 +88,8 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
             b.move(Queen.class, ChessPiece.Color.WHITE, "E2");
+
+
         } catch(Exception e) {
             // Do nothing
         }

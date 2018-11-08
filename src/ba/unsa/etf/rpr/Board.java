@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.xml.internal.ws.api.model.CheckedException;
 import org.omg.CORBA.CODESET_INCOMPATIBLE;
 import sun.rmi.runtime.NewThreadAction;
 
@@ -32,13 +33,13 @@ public class Board {
                 if (tabla[i].getPozicija().equals(odrediste)) {
                     if (tabla[i].getBoja() != figura.getBoja()) {
                         drugeBoje = true;
-                        System.out.println("xd");
                     }
                 }
             }
         }
         return drugeBoje;
     }
+
     public static List<String> pomocna(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
         char slovoNovePozicije = novaPozicija.charAt(0);
         char slovoStarePozicije = staraPozicija.charAt(0);
@@ -193,7 +194,7 @@ public class Board {
             if (tabla[i] != null) {
                 for (int j = 0; j < tacke.size(); j++) {
                     if (tabla[i].getPozicija().equals(tacke.get(j))) {
-                       return true;
+                        return true;
                     }
                 }
 
@@ -270,9 +271,9 @@ public class Board {
 
                         System.out.println("Ima figura");
                         if (daliJeFiguraDrugeBoje(tabla, tabla[i], position)) {
-                            if(tabla[i].getClass()==Pawn.class){
-                                if(DaliPijunJedePravo(position,tabla[i].getPozicija())){
-                                    throw  new IllegalChessMoveException("greska");
+                            if (tabla[i].getClass() == Pawn.class) {
+                                if (DaliPijunJedePravo(position, tabla[i].getPozicija())) {
+                                    throw new IllegalChessMoveException("greska");
                                 }
                             }
                             System.out.println("druge je boje pojestiii");
@@ -326,7 +327,6 @@ public class Board {
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] != null) {
                 if (tabla[i].getPozicija().equals(oldPosition)) {
-                    System.out.println(tabla[i].getClass());
                     this.move(tabla[i].getClass(), tabla[i].getBoja(), newPosition);
                     break;
                 }
@@ -338,57 +338,49 @@ public class Board {
         }
     }
 
-    public boolean isCheck(ChessPiece.Color boja) throws CloneNotSupportedException {
-        String pozicijaKralja="XD";
-        ChessPiece figuraPomocna=null;
-        int pozicijaKinga=0;
-        boolean dal=false;
-        for(int i=0;i<tabla.length;i++){
-            if(tabla[i]!=null){
-            if(tabla[i].getClass()==King.class&&tabla[i].getBoja()==boja){
-                pozicijaKralja=tabla[i].getPozicija();
-                pozicijaKinga=i;
-                figuraPomocna=(ChessPiece)tabla[i].clone();
+    boolean isCheck(ChessPiece.Color boja) throws CloneNotSupportedException {
+        boolean sah = false;
+        String s = "benjo";
+        ChessPiece prva=null;
+        ChessPiece druga=null;
+        int indeks=0;
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i] != null && tabla[i].getClass() == King.class && tabla[i].getBoja() == boja) {
+                s = tabla[i].getPozicija();
+                indeks=i;
+                prva=(ChessPiece)tabla[i].clone();
                 break;
             }
         }
-        }
-        ChessPiece probaj;
-        boolean proslo=false;
-        System.out.println(pozicijaKralja);
-        for(int i=0;i<tabla.length;i++){
-            if(tabla[i]!=null){
-                probaj=(ChessPiece)tabla[i].clone();
-                if(tabla[i].getBoja()!=boja){
-                    try{
-                        move(tabla[i].getPozicija(),pozicijaKralja);
-                        proslo=true;
-                        tabla[pozicijaKinga]=figuraPomocna;
-                        tabla[i]=probaj;
-                        break;
-                    }catch (Exception e){
+        for (int i = 0; i < tabla.length; i++) {
+            try{
+            if (tabla[i] != null && tabla[i].getBoja() != boja) {
+                druga=(ChessPiece)tabla[i].clone();
 
-                    }
+                System.out.println(s);
+                    System.out.println(tabla[i].getPozicija());
+                    move(tabla[i].getPozicija(), s);
+                    sah = true;
+                    tabla[i]=druga;
+                    tabla[indeks]=prva;
+                    break;
                 }
-            }
+            }catch (Exception e){
+
         }
-
-        return proslo;
-
-
+        }
+        return sah;
     }
 
 
-    public static boolean DaliPijunJedePravo(String pozicija_kralja,String pozicija_pijuna){
-        char slovoKralja=pozicija_kralja.charAt(0);
-        char slovoPijuna=pozicija_pijuna.charAt(0);
-        char brojKralja=pozicija_kralja.charAt(1);
-        char brojPijuna=pozicija_pijuna.charAt(1);
+    public static boolean DaliPijunJedePravo(String pozicija_kralja, String pozicija_pijuna) {
+        char slovoKralja = pozicija_kralja.charAt(0);
+        char slovoPijuna = pozicija_pijuna.charAt(0);
+        char brojKralja = pozicija_kralja.charAt(1);
+        char brojPijuna = pozicija_pijuna.charAt(1);
 
-        if (abs(slovoKralja - slovoPijuna) == 0&&abs(brojKralja - brojPijuna) != 0||
-                abs(slovoKralja - slovoPijuna) != 0&&abs(brojKralja - brojPijuna) == 0        ){
-            return true;
-        }else return false;
+        return abs(slovoKralja - slovoPijuna) == 0 && abs(brojKralja - brojPijuna) != 0 ||
+                abs(slovoKralja - slovoPijuna) != 0 && abs(brojKralja - brojPijuna) == 0;
     }
 
 
