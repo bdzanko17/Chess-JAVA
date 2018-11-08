@@ -30,7 +30,7 @@ public class Knight extends ChessPiece {
         } else throw new IllegalArgumentException();
     }
 
-    public static boolean legalan_za_konja(char slovo, char broj, char slovo2, char broj2, Color boja) {
+    private static boolean legalan_za_konja(char slovo, char broj, char slovo2, char broj2, Color boja) {
         boolean x = false;
         if ((abs(slovo2 - slovo) == 1 && abs(broj - broj2) == 2) || (abs(slovo - slovo2) == 2 && abs(broj - broj2) == 1))
             x = true;

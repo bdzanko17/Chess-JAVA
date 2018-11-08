@@ -7,7 +7,7 @@ public class Pawn extends ChessPiece {
         super(pozicija, boja);
     }
 
-    public static boolean legalan_za_piuna(char slovo, char broj, char slovo2, char broj2, Color boja) {
+    private static boolean legalan_za_piuna(char slovo, char broj, char slovo2, char broj2, Color boja) {
         boolean x = false;
 
         if (boja == Color.WHITE) {

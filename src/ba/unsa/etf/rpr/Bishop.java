@@ -8,7 +8,7 @@ public class Bishop extends ChessPiece {
         super(pozicija, boja);
     }
 
-    public static boolean legalan_za_lovca(char slovo, char broj, char slovo2, char broj2) {
+    private static boolean legalan_za_lovca(char slovo, char broj, char slovo2, char broj2) {
         boolean x = false;
         if (slovo != slovo2 && broj != broj2 && (abs(slovo2 - slovo) == abs(broj2 - broj))) x = true;
         return x;

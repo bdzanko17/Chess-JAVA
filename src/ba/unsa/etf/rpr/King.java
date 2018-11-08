@@ -9,7 +9,7 @@ public class King extends ChessPiece {
         super(pozicija, boja);
     }
 
-    public static boolean legalan_za_kralja(char slovo, char broj, char slovo2, char broj2) {
+    private static boolean legalan_za_kralja(char slovo, char broj, char slovo2, char broj2) {
         boolean x = false;
         if (abs(slovo - slovo2) <= 1) {
 

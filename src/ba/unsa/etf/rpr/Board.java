@@ -13,7 +13,7 @@ import static java.lang.Math.abs;
 public class Board {
     public ChessPiece[] tabla;
 
-    public static boolean daliImaNaOdredistuFigure(ChessPiece[] tabla, String odrediste) {
+    private static boolean daliImaNaOdredistuFigure(ChessPiece[] tabla, String odrediste) {
         boolean ima = false;
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] != null) {
@@ -26,7 +26,7 @@ public class Board {
         return ima;
     }
 
-    public static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla, ChessPiece figura, String odrediste) {
+    private static boolean daliJeFiguraDrugeBoje(ChessPiece[] tabla, ChessPiece figura, String odrediste) {
         boolean drugeBoje = false;
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] != null) {
@@ -41,7 +41,7 @@ public class Board {
     }
 
 
-    public static boolean daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
+    private static boolean daliimafiguraizmedjupozicija(ChessPiece[] tabla, String novaPozicija, String staraPozicija) {
         char slovoNovePozicije = novaPozicija.charAt(0);
         char slovoStarePozicije = staraPozicija.charAt(0);
         char brojNoveP = novaPozicija.charAt(1);
@@ -305,7 +305,7 @@ public class Board {
     }
 
 
-    public static boolean DaliPijunJedePravo(String pozicija_kralja, String pozicija_pijuna) {
+    private static boolean DaliPijunJedePravo(String pozicija_kralja, String pozicija_pijuna) {
         char slovoKralja = pozicija_kralja.charAt(0);
         char slovoPijuna = pozicija_pijuna.charAt(0);
         char brojKralja = pozicija_kralja.charAt(1);

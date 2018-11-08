@@ -5,7 +5,7 @@ import static java.lang.Math.abs;
 public class Queen extends ChessPiece {
 
 
-    public static boolean legalan_za_kraljiicu(char slovo, char broj, char slovo2, char broj2) {
+    private static boolean legalan_za_kraljiicu(char slovo, char broj, char slovo2, char broj2) {
         boolean x = false;
         if((abs(slovo2-slovo)==abs(broj2-broj)) || (slovo==slovo2 &&broj!=broj2)||(slovo!=slovo2 &&broj==broj2)    )
             x=true;

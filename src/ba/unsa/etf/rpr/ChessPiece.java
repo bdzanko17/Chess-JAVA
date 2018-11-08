@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 public abstract class ChessPiece implements Cloneable {
+
     public static enum Color {
         BLACK, WHITE
     }
@@ -40,4 +41,11 @@ public abstract class ChessPiece implements Cloneable {
 
         }
 
+    @Override
+    public boolean equals(Object obj) {
+        ChessPiece x=(ChessPiece)obj;
+        if(x.getPozicija().equals(this.pozicija)&&x.getBoja().equals(this.boja)){
+            return true;
+        }else return false;
+    }
 }

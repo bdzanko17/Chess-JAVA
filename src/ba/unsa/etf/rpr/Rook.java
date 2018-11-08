@@ -28,7 +28,7 @@ public class Rook extends ChessPiece {
         } else throw new IllegalArgumentException();
     }
 
-    public static boolean legalan_za_topa(char slovo, char broj, char slovo2, char broj2) {
+    private static boolean legalan_za_topa(char slovo, char broj, char slovo2, char broj2) {
         if (broj == broj2 || slovo == slovo2) return true;
         else return false;
     }
