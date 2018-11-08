@@ -299,4 +299,19 @@ class BoardTest {
 
         );
     }
+
+    @Test
+        // Check by Knight
+    void isCheck5() throws CloneNotSupportedException {
+        Board b = new Board();
+        try {
+            b.move(Knight.class, ChessPiece.Color.WHITE,"C3");
+            b.move(Knight.class, ChessPiece.Color.WHITE,"D5");
+            b.move(Knight.class, ChessPiece.Color.WHITE,"C7");
+
+        } catch(Exception e) {
+            // Do nothing
+        }
+        assertTrue(b.isCheck(ChessPiece.Color.BLACK));
+    }
 }
