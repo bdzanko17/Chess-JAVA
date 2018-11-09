@@ -15,7 +15,7 @@ public class Main {
             char slovo2=tekst.charAt(1);
             if(slovo1>='A'&&slovo1<='H' &&slovo2>='1'&&slovo2<='8'){
                 return true;
-            }
+            }else return false;
 
         }else {
             char slovo1=tekst.charAt(0);
@@ -24,7 +24,7 @@ public class Main {
             if((slovo2>='A'&&slovo2<='H') &&(slovo3>='1'&&slovo3<='8')&&(slovo1=='K'||slovo1=='Q'
             ||slovo1=='R'||slovo1=='B'||slovo1=='N')){
                 return true;
-            }
+            }else return false;
         }
 
     }
@@ -40,12 +40,40 @@ public class Main {
         mapa.put("N", Knight.class);
     String tekst;
     Scanner unos=new Scanner(System.in);
-    tekst=unos.nextLine();
-    tekst=tekst.toUpperCase();
 
-    while (!tekst.equals("X")){
+
+
+
+    while (true){
         if(bijeli){
             System.out.print("White move:");
+            tekst=unos.nextLine();
+            tekst=tekst.toUpperCase();
+            if(!provjera(tekst)){
+                continue;
+            }
+            if(tekst.length()==2){
+                try {
+                    ploca.move(Pawn.class, ChessPiece.Color.WHITE, tekst);
+                }
+                catch (Exception e){
+                    System.out.println("illegal move");
+                    bijeli=true;
+                    continue;
+                }
+                }else{
+                String pozicija=Character.toString(tekst.charAt(1))+Character.toString(tekst.charAt(2));
+                Class klasa=mapa.get(tekst.charAt(0));
+                try {
+                    ploca.move(klasa, ChessPiece.Color.WHITE, pozicija);
+                }
+                catch (Exception e){
+                    System.out.println("illegal move");
+                    bijeli=true;
+                    continue;
+                }
+
+            }
 
         }
 
