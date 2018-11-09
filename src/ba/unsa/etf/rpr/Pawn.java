@@ -42,18 +42,18 @@ public class Pawn extends ChessPiece {
                 && position.charAt(1) >= '1' && position.charAt(1) <= '8')) {
             String s = this.getPozicija();
             s.toUpperCase();
-            if(!(this.pozicija.equals("A2")||this.pozicija.equals("B2")||this.pozicija.equals("A2")
-                    ||this.pozicija.equals("C2")||this.pozicija.equals("D2")||this.pozicija.equals("E2")
-                    ||this.pozicija.equals("F2")||this.pozicija.equals("G2")||this.pozicija.equals("H2")
-                    ||this.pozicija.equals("A7")||this.pozicija.equals("B7")||this.pozicija.equals("C7")
-                    ||this.pozicija.equals("C7")||this.pozicija.equals("D7")||this.pozicija.equals("E7")
-                    ||this.pozicija.equals("F7")||this.pozicija.equals("G7")||this.pozicija.equals("H7")
-            )&&diran==true)
-            {
-             if(abs(position.charAt(1)-s.charAt(1))>1){
-                 throw new IllegalChessMoveException("greska");
-             }
-            }
+//            if(!(this.pozicija.equals("A2")||this.pozicija.equals("B2")||this.pozicija.equals("A2")
+//                    ||this.pozicija.equals("C2")||this.pozicija.equals("D2")||this.pozicija.equals("E2")
+//                    ||this.pozicija.equals("F2")||this.pozicija.equals("G2")||this.pozicija.equals("H2")
+//                    ||this.pozicija.equals("A7")||this.pozicija.equals("B7")||this.pozicija.equals("C7")
+//                    ||this.pozicija.equals("C7")||this.pozicija.equals("D7")||this.pozicija.equals("E7")
+//                    ||this.pozicija.equals("F7")||this.pozicija.equals("G7")||this.pozicija.equals("H7")
+//            ))
+//            {
+//             if(abs(position.charAt(1)-s.charAt(1))>1){
+//                 throw new IllegalChessMoveException("greska");
+//             }
+//            }
             char slovo = s.charAt(0);
             char broj = s.charAt(1);
             char slovo2 = position.charAt(0);

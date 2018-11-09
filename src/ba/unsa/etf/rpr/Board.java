@@ -220,7 +220,6 @@ public class Board {
                     }else{
                         if(type==Pawn.class){
                             if(!DaliPijunJedePravo(position,tabla[i].getPozicija())){
-                                System.out.println("XD");
 
                                 if(!daliImaNaOdredistuFigure(tabla, position)){
                                     throw new IllegalChessMoveException("greska");
