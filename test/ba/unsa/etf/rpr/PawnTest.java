@@ -74,15 +74,13 @@ class PawnTest {
         );
     }
     @Test
-        //pijun ukoso dva polja !! ne moze
     void clonee() throws CloneNotSupportedException {
         Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
         Pawn x=(Pawn) p.clone();
         assertEquals(p,x);
     }
     @Test
-        //pijun ukoso dva polja !! ne moze
-    void clonee2() throws CloneNotSupportedException {
+    void equals2() throws CloneNotSupportedException {
         Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
         Pawn x=new Pawn("E5", ChessPiece.Color.WHITE);
         assertNotEquals(p,x);
