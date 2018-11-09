@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     private static boolean provjera(String tekst) {
         if(tekst==null || tekst.length()>3||tekst.length()<2){
-            throw new IllegalArgumentException("greska");
+            return false;
         }
         if(tekst.length()==2){
             char slovo1=tekst.charAt(0);
@@ -55,6 +55,7 @@ public class Main {
             if(tekst.length()==2){
                 try {
                     ploca.move(Pawn.class, ChessPiece.Color.WHITE, tekst);
+                    System.out.println("uspjeno pomjereno");
                 }
                 catch (Exception e){
                     System.out.println("illegal move");
