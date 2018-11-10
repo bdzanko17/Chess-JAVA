@@ -20,6 +20,28 @@ class BoardTest {
                 }
         );
     }
+    @Test
+        // Is the board usable after isCheck
+    void someLegalMoves2() throws CloneNotSupportedException {
+        Board b = new Board();
+        boolean no = b.isCheck(ChessPiece.Color.WHITE);
+        assertThrows(IllegalChessMoveException.class,
+                () -> {
+                    b.move(Rook.class, ChessPiece.Color.WHITE,"G1");
+                }
+        );
+    }
+    @Test
+        // Is the board usable after isCheck
+    void someLegalMoves3() throws CloneNotSupportedException {
+        Board b = new Board();
+        boolean no = b.isCheck(ChessPiece.Color.WHITE);
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    b.move("XASDSADA", "SADSADSA");
+                }
+        );
+    }
 
     @Test
         // Pawn eats diagonally
