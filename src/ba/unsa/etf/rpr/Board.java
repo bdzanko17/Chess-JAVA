@@ -180,15 +180,13 @@ public class Board {
                 ChessPiece pomocna = (ChessPiece) tabla[i].clone();
                 staraPozicija = tabla[i].getPozicija();
                 if (tabla[i].getClass() == type && tabla[i].getBoja() == color) {
-
                     try {
                         pomocna.move(position);
                         proslo = true;
-
                         /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                     } catch (Exception e) {
-                        proslo = false;
+                        proslo=false;
                         continue;
 
                     }
@@ -213,22 +211,23 @@ public class Board {
                                 }
                             }
                         } else {
-                            throw new IllegalChessMoveException("greska");
+                            throw new IllegalChessMoveException("Iste boje");
 
                         }
                     } else {
                         if (type == Pawn.class) {
                             if (!DaliPijunJedePravo(position, tabla[i].getPozicija())) {
-
+                                System.out.println(tabla[i].getPozicija());
+                                    System.out.println("KAKO OVO PRODJEEEEEEEE");
                                 if (!daliImaNaOdredistuFigure(tabla, position)) {
-                                    throw new IllegalChessMoveException("greska");
+                                    throw new IllegalChessMoveException("ne moze ici ukoso bezveze");
                                 }
                             }
                         }
                     }
 
                     if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
-                        throw new IllegalChessMoveException("greska");
+                        throw new IllegalChessMoveException("ima figura");
                     } else {
 
                         if (tabla[i] != null) {
@@ -241,7 +240,7 @@ public class Board {
 
             }
         }
-        if (proslo == false) {
+        if (!proslo) {
             throw new IllegalChessMoveException("Greska");
         }
 
@@ -313,9 +312,9 @@ public class Board {
         char slovoPijuna = pozicija_pijuna.charAt(0);
         char brojKralja = pozicija_kralja.charAt(1);
         char brojPijuna = pozicija_pijuna.charAt(1);
-
-        return abs(slovoKralja - slovoPijuna) == 0 && abs(brojKralja - brojPijuna) != 0 ||
-                abs(slovoKralja - slovoPijuna) != 0 && abs(brojKralja - brojPijuna) == 0;
+        boolean x= (abs(slovoKralja - slovoPijuna) == 0 && abs(brojKralja - brojPijuna) > 0 )||
+                (abs(slovoKralja - slovoPijuna) != 0 && abs(brojKralja - brojPijuna) == 0);
+        return  x;
     }
 
 
