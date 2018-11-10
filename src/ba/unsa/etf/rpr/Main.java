@@ -110,11 +110,11 @@ public class Main {
                         System.out.println("uspjeno pomjereno");
                         bijeli=true;
                         try {
-                            if (ploca.isCheck(ChessPiece.Color.BLACK)) {
+                            if (ploca.isCheck(ChessPiece.Color.WHITE)) {
                                 System.out.println("CHESS!!!");
                             }
                         } catch (Exception e) {
-                            System.out.println("nije   sah");
+                            System.out.println("nije sah");
                         }
 
                     } catch (Exception e) {
