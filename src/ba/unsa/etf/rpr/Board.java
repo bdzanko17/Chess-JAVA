@@ -218,14 +218,13 @@ public class Board {
                     } else {
                         if (type == Pawn.class) {
                             if (!DaliPijunJedePravo(position, tabla[i].getPozicija())) {
-
-                                // JOS MORA DA SE PROVJERI DA LI NEKI DRUGI PIJUN MOZE
                                 if (!daliImaNaOdredistuFigure(tabla, position)) {
                                     continue;
                                 }
                             }
                         }
                     }
+                    System.out.println("proslo");
 
                     if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
                         throw new IllegalChessMoveException("ima figura");
