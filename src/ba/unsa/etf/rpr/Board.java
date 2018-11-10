@@ -217,6 +217,7 @@ public class Board {
                     } else {
                         if (type == Pawn.class) {
                             if (!DaliPijunJedePravo(position, tabla[i].getPozicija())) {
+
                                 // JOS MORA DA SE PROVJERI DA LI NEKI DRUGI PIJUN MOZE
                                 if (!daliImaNaOdredistuFigure(tabla, position)) {
                                     throw new IllegalChessMoveException("ne moze ici ukoso bezveze");
