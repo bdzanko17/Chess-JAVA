@@ -40,11 +40,64 @@ public class Main {
         mapa.put("N", new Knight("A4", ChessPiece.Color.WHITE));
         String tekst;
         Scanner unos = new Scanner(System.in);
+        Pawn pawn = new Pawn("H7", ChessPiece.Color.BLACK);
 
 
         while (true) {
-            if (bijeli) {
-                System.out.print("White move:");
+//            if (bijeli) {
+//                System.out.print("White move:");
+//                tekst = unos.nextLine();
+//                tekst = tekst.toUpperCase();
+//                if (!provjera(tekst)) {
+//                    continue;
+//                }
+//                if (tekst.length() == 2) {
+//                    try {
+//                        ploca.move(Pawn.class, ChessPiece.Color.WHITE, tekst);
+//                        System.out.println("uspjeno pomjereno");
+//                        bijeli = true;
+//                        try {
+//                            if (ploca.isCheck(ChessPiece.Color.BLACK)) {
+//
+//                                System.out.println("CHESS!!!");
+//                            }
+//                        } catch (Exception e) {
+//                            System.out.println("nije   sah");
+//                        }
+//
+//                    } catch (Exception e) {
+//                        System.out.println("illegal move");
+//                        bijeli = true;
+//                        continue;
+//                    }
+//                } else {
+//                    String pozicija = Character.toString(tekst.charAt(1)) + Character.toString(tekst.charAt(2));
+//
+//                    try {
+//                        ChessPiece figura = mapa.get(Character.toString(tekst.charAt(0)));
+//                        System.out.println(figura);
+//                        ploca.move(figura.getClass(), ChessPiece.Color.WHITE, pozicija);
+//                        bijeli = true;
+//                        try {
+//                            if (ploca.isCheck(ChessPiece.Color.BLACK)) {
+//
+//                                System.out.println("CHESS!!!");
+//                            }
+//                        } catch (Exception e) {
+//                            System.out.println("nije   sah");
+//                        }
+//
+//                    } catch (Exception e) {
+//                        System.out.println("illegal move");
+//                        bijeli = true;
+//                        continue;
+//                    }
+//
+//                }
+
+
+//            }else{
+                System.out.print("Black move:");
                 tekst = unos.nextLine();
                 tekst = tekst.toUpperCase();
                 if (!provjera(tekst)) {
@@ -52,11 +105,21 @@ public class Main {
                 }
                 if (tekst.length() == 2) {
                     try {
-                        ploca.move(Pawn.class, ChessPiece.Color.WHITE, tekst);
+                        System.out.println(tekst);
+                        ploca.move(Pawn.class, ChessPiece.Color.BLACK, tekst);
                         System.out.println("uspjeno pomjereno");
+                        bijeli=true;
+                        try {
+                            if (ploca.isCheck(ChessPiece.Color.BLACK)) {
+                                System.out.println("CHESS!!!");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("nije   sah");
+                        }
+
                     } catch (Exception e) {
                         System.out.println("illegal move");
-                        bijeli = true;
+                        bijeli = false;
                         continue;
                     }
                 } else {
@@ -65,10 +128,20 @@ public class Main {
                     try {
                         ChessPiece figura=mapa.get(Character.toString(tekst.charAt(0)));
                         System.out.println(figura);
-                        ploca.move(figura.getClass(), ChessPiece.Color.WHITE, pozicija);
+                        ploca.move(figura.getClass(), ChessPiece.Color.BLACK, pozicija);
+                        bijeli=true;
+                        try {
+                            if (ploca.isCheck(ChessPiece.Color.WHITE)) {
+
+                                System.out.println("CHESS!!!");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("nije   sah");
+                        }
+
                     } catch (Exception e) {
                         System.out.println("illegal move");
-                        bijeli = true;
+                        bijeli = false;
                         continue;
                     }
 
@@ -77,7 +150,5 @@ public class Main {
             }
 
         }
-
-    }
 }
 
