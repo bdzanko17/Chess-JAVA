@@ -173,6 +173,7 @@ public class Board {
         String staraPozicija;
         boolean proslo = false;
         List<ChessPiece> figure;
+        boolean xa=false;
         position = position.toUpperCase();
 
         for (int i = 0; i < this.tabla.length; i++) {
@@ -220,7 +221,7 @@ public class Board {
 
                                 // JOS MORA DA SE PROVJERI DA LI NEKI DRUGI PIJUN MOZE
                                 if (!daliImaNaOdredistuFigure(tabla, position)) {
-                                    throw new IllegalChessMoveException("ne moze ici ukoso bezveze");
+                                    continue;
                                 }
                             }
                         }
