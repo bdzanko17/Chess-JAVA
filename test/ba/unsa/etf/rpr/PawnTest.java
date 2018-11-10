@@ -74,6 +74,12 @@ class PawnTest {
         );
     }
     @Test
+    void setBoja() {
+        Pawn b=new Pawn("A3", ChessPiece.Color.WHITE);
+        b.setBoja(ChessPiece.Color.BLACK);
+        assertEquals(ChessPiece.Color.BLACK,b.getBoja());
+    }
+    @Test
     void clonee() throws CloneNotSupportedException {
         Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
         Pawn x=(Pawn) p.clone();

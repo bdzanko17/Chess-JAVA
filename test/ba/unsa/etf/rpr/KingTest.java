@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class KingTest {
@@ -26,6 +28,12 @@ class KingTest {
         assertDoesNotThrow(
                 () -> k.move("E2")
         );
+    }
+    @Test
+    void setBoja() {
+        King b=new King("A3", ChessPiece.Color.WHITE);
+        b.setBoja(ChessPiece.Color.BLACK);
+        assertEquals(ChessPiece.Color.BLACK,b.getBoja());
     }
 
     @org.junit.jupiter.api.Test

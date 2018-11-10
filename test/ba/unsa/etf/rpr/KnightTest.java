@@ -15,6 +15,12 @@ class KnightTest {
 
 
     }
+    @Test
+    void setBoja() {
+        Knight b=new Knight("A3", ChessPiece.Color.WHITE);
+        b.setBoja(ChessPiece.Color.BLACK);
+        assertEquals(ChessPiece.Color.BLACK,b.getBoja());
+    }
 
     @Test
     void move2() {
