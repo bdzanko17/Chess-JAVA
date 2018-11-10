@@ -188,11 +188,10 @@ public class Board {
                         /*moze se pomjeriti ali da vidimo da li smeta šta*/
 
                     } catch (Exception e) {
-                        proslo=false;
+                        proslo = false;
                         continue;
 
                     }
-
 
 
                     if (daliImaNaOdredistuFigure(tabla, position)) {
@@ -217,11 +216,11 @@ public class Board {
                             throw new IllegalChessMoveException("greska");
 
                         }
-                    }else{
-                        if(type==Pawn.class){
-                            if(!DaliPijunJedePravo(position,tabla[i].getPozicija())){
+                    } else {
+                        if (type == Pawn.class) {
+                            if (!DaliPijunJedePravo(position, tabla[i].getPozicija())) {
 
-                                if(!daliImaNaOdredistuFigure(tabla, position)){
+                                if (!daliImaNaOdredistuFigure(tabla, position)) {
                                     throw new IllegalChessMoveException("greska");
                                 }
                             }
@@ -230,8 +229,7 @@ public class Board {
 
                     if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
                         throw new IllegalChessMoveException("greska");
-                    }
-                    else {
+                    } else {
 
                         if (tabla[i] != null) {
                             tabla[i].move(position);
@@ -243,7 +241,7 @@ public class Board {
 
             }
         }
-        if(proslo==false){
+        if (proslo == false) {
             throw new IllegalChessMoveException("Greska");
         }
 
@@ -280,31 +278,31 @@ public class Board {
     boolean isCheck(ChessPiece.Color boja) throws CloneNotSupportedException {
         boolean sah = false;
         String s = "benjo";
-        ChessPiece prva=null;
-        ChessPiece druga=null;
-        int indeks=0;
+        ChessPiece prva = null;
+        ChessPiece druga = null;
+        int indeks = 0;
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] != null && tabla[i].getClass() == King.class && tabla[i].getBoja() == boja) {
                 s = tabla[i].getPozicija();
-                indeks=i;
-                prva=(ChessPiece)tabla[i].clone();
+                indeks = i;
+                prva = (ChessPiece) tabla[i].clone();
                 break;
             }
         }
         for (int i = 0; i < tabla.length; i++) {
-            try{
-            if (tabla[i] != null && tabla[i].getBoja() != boja) {
-                druga=(ChessPiece)tabla[i].clone();
+            try {
+                if (tabla[i] != null && tabla[i].getBoja() != boja) {
+                    druga = (ChessPiece) tabla[i].clone();
 
                     move(tabla[i].getPozicija(), s);
                     sah = true;
-                    tabla[i]=druga;
-                    tabla[indeks]=prva;//vratiit na staro
+                    tabla[i] = druga;
+                    tabla[indeks] = prva;//vratiit na staro
                     break;
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
 
-        }
+            }
         }
         return sah;
     }

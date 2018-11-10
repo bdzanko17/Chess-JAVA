@@ -6,7 +6,8 @@ public class Pawn extends ChessPiece {
     Pawn(String pozicija, Color boja) throws IllegalArgumentException {
         super(pozicija, boja);
     }
-    public Boolean diran=false;
+
+    public Boolean diran = false;
 
     private static boolean legalan_za_piuna(char slovo, char broj, char slovo2, char broj2, Color boja) {
         boolean x = false;
@@ -15,19 +16,20 @@ public class Pawn extends ChessPiece {
         if (boja == Color.WHITE) {
             if ((slovo == slovo2 && abs(broj2 - broj) == 1 && broj2 > broj) || (abs(slovo - slovo2) == 1 && broj2 > broj && abs(broj - broj2) == 1)
                     || (slovo == slovo2 && abs(broj2 - broj) == 2 && broj2 > broj)) {
-                if(abs(slovo-slovo2)>1&&abs(broj2-broj)>1){
-                    x=false;
-                }else
+                if (abs(slovo - slovo2) > 1 && abs(broj2 - broj) > 1) {
+                    x = false;
+                } else
                     x = true;
             }
         } else if (boja == Color.BLACK) {
             if ((slovo == slovo2 && abs(broj2 - broj) == 1 && broj2 < broj) || (abs(slovo - slovo2) == 1 && broj2 < broj && abs(broj - broj2) == 1)
                     || (slovo == slovo2 && abs(broj2 - broj) == 2 && broj2 < broj)) {
-                if(abs(slovo-slovo2)>1&&abs(broj2-broj)>1){
-                    x=false;
-                }else
-                    x = true;            }
+                if (abs(slovo - slovo2) > 1 && abs(broj2 - broj) > 1) {
+                    x = false;
+                } else
+                    x = true;
             }
+        }
 
 
         return x;
@@ -60,7 +62,7 @@ public class Pawn extends ChessPiece {
             char broj2 = position.charAt(1);
             if (legalan_za_piuna(slovo, broj, slovo2, broj2, this.getBoja())) {
                 this.setPozicija(position);
-                diran=true;
+                diran = true;
             } else {
                 throw new IllegalChessMoveException("Nemoguc potez");  //izuzetak
             }
