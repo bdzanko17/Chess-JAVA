@@ -12,7 +12,8 @@ class BoardTest {
         boolean no = b.isCheck(ChessPiece.Color.WHITE);
         assertDoesNotThrow(
                 () -> {
-                    b.move(Pawn.class, ChessPiece.Color.BLACK, "H6");
+                    b.move(Pawn.class, ChessPiece.Color.WHITE, "G3");
+
 //                    b.move(Bishop.class, ChessPiece.Color.WHITE, "A6");
 //                    b.move(Knight.class, ChessPiece.Color.WHITE, "C3");
 //                    b.move(King.class, ChessPiece.Color.WHITE, "E2");
@@ -45,7 +46,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -66,7 +67,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F6");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F8");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         b.isCheck(ChessPiece.Color.BLACK);
@@ -88,7 +89,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "D7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
             b.move(Queen.class, ChessPiece.Color.WHITE, "E2");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertFalse(b.isCheck(ChessPiece.Color.BLACK));
@@ -110,7 +111,7 @@ class BoardTest {
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F6");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "E7");
             b.move(Pawn.class, ChessPiece.Color.WHITE, "F8");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -179,7 +180,7 @@ class BoardTest {
             b.move("E4", "E5");
             b.move("E5", "E6");
             b.move("E6", "D7");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -196,7 +197,7 @@ class BoardTest {
             b.move("E6", "D7");
             b.move("D7", "C8");
             b.move("D1", "E2");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertFalse(b.isCheck(ChessPiece.Color.BLACK));
@@ -218,7 +219,7 @@ class BoardTest {
             b.move("F5", "F6");
             b.move("F6", "E7");
             b.move("E7", "F8");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));
@@ -255,7 +256,7 @@ class BoardTest {
             b.move("E6", "D7");
             b.move("D7", "C8");
             b.move("D1", "E2");
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         b.isCheck(ChessPiece.Color.BLACK);
@@ -269,7 +270,7 @@ class BoardTest {
 
     @Test
     void pijunJedePravo() throws IllegalChessMoveException, CloneNotSupportedException {
-        Board tabla=new Board();
+        Board tabla = new Board();
         assertThrows(IllegalChessMoveException.class,
                 () -> {
                     tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
@@ -285,14 +286,13 @@ class BoardTest {
 
     @Test
     void pijunJedeUkosoDvije() throws IllegalChessMoveException, CloneNotSupportedException {
-        Board tabla=new Board();
+        Board tabla = new Board();
         assertThrows(IllegalChessMoveException.class,
                 () -> {
                     tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E4");
                     tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E5");
                     tabla.move(Pawn.class, ChessPiece.Color.WHITE, "E6");
                     tabla.move(Pawn.class, ChessPiece.Color.WHITE, "C8");
-
 
 
                 }
@@ -305,11 +305,11 @@ class BoardTest {
     void isCheck5() throws CloneNotSupportedException {
         Board b = new Board();
         try {
-            b.move(Knight.class, ChessPiece.Color.WHITE,"C3");
-            b.move(Knight.class, ChessPiece.Color.WHITE,"D5");
-            b.move(Knight.class, ChessPiece.Color.WHITE,"C7");
+            b.move(Knight.class, ChessPiece.Color.WHITE, "C3");
+            b.move(Knight.class, ChessPiece.Color.WHITE, "D5");
+            b.move(Knight.class, ChessPiece.Color.WHITE, "C7");
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Do nothing
         }
         assertTrue(b.isCheck(ChessPiece.Color.BLACK));

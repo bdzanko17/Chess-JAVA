@@ -217,7 +217,7 @@ public class Board {
                     } else {
                         if (type == Pawn.class) {
                             if (!DaliPijunJedePravo(position, tabla[i].getPozicija())) {
-                                    ChessPiece next=
+
                                 if (!daliImaNaOdredistuFigure(tabla, position)) {
                                     throw new IllegalChessMoveException("ne moze ici ukoso bezveze");
                                 }
