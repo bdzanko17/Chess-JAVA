@@ -40,7 +40,6 @@ public class Main {
         mapa.put("N", new Knight("A4", ChessPiece.Color.WHITE));
         String tekst;
         Scanner unos = new Scanner(System.in);
-        Pawn pawn = new Pawn("H7", ChessPiece.Color.BLACK);
 
 
         while (true) {
@@ -57,7 +56,6 @@ public class Main {
                 if (tekst.length() == 2) {
                     try {
                         ploca.move(Pawn.class, ChessPiece.Color.WHITE, tekst);
-                        System.out.println("uspjeno pomjereno");
                         bijeli = false;
                         try {
                             if (ploca.isCheck(ChessPiece.Color.BLACK)) {
@@ -65,7 +63,6 @@ public class Main {
                                 System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
-                            System.out.println("nije   sah");
                         }
 
                     } catch (Exception e) {
@@ -87,7 +84,7 @@ public class Main {
                                 System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
-                            System.out.println("nije   sah");
+
                         }
 
                     } catch (Exception e) {
@@ -112,15 +109,14 @@ public class Main {
                 if (tekst.length() == 2) {
                     try {
                         ploca.move(Pawn.class, ChessPiece.Color.BLACK, tekst);
-                        System.out.println("uspjeno pomjereno");
                         bijeli=true;
                         try {
                             if (ploca.isCheck(ChessPiece.Color.WHITE)) {
                                 System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
-                            System.out.println("nije sah");
-                        }
+//izuzetak
+                   }
 
                     } catch (Exception e) {
                         System.out.println("illegal move");
@@ -141,7 +137,7 @@ public class Main {
                                 System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
-                            System.out.println("nije   sah");
+
                         }
 
                     } catch (Exception e) {
