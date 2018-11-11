@@ -224,7 +224,6 @@ public class Board {
                             }
                         }
                     }
-                    System.out.println("proslo");
 
                     if (daliimafiguraizmedjupozicija(tabla, position, staraPozicija) && type != Knight.class) {
                         throw new IllegalChessMoveException("ima figura");

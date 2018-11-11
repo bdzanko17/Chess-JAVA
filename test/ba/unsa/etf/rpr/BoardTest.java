@@ -42,6 +42,19 @@ class BoardTest {
                 }
         );
     }
+    @Test
+        // Is the board usable after isCheck
+    void someLegalMoves4() throws CloneNotSupportedException {
+        Board b = new Board();
+        boolean no = b.isCheck(ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> {
+                    b.move(Pawn.class, ChessPiece.Color.WHITE, "A4");
+                    b.move(Pawn.class, ChessPiece.Color.WHITE, "B3");
+
+                }
+        );
+    }
 
     @Test
         // Pawn eats diagonally

@@ -62,7 +62,7 @@ public class Main {
                         try {
                             if (ploca.isCheck(ChessPiece.Color.BLACK)) {
 
-                                System.out.println("CHESS!!!");
+                                System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
                             System.out.println("nije   sah");
@@ -84,7 +84,7 @@ public class Main {
                         try {
                             if (ploca.isCheck(ChessPiece.Color.BLACK)) {
 
-                                System.out.println("CHESS!!!");
+                                System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
                             System.out.println("nije   sah");
@@ -111,13 +111,12 @@ public class Main {
                 }
                 if (tekst.length() == 2) {
                     try {
-                        System.out.println(tekst);
                         ploca.move(Pawn.class, ChessPiece.Color.BLACK, tekst);
                         System.out.println("uspjeno pomjereno");
                         bijeli=true;
                         try {
                             if (ploca.isCheck(ChessPiece.Color.WHITE)) {
-                                System.out.println("CHESS!!!");
+                                System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
                             System.out.println("nije sah");
@@ -139,7 +138,7 @@ public class Main {
                         try {
                             if (ploca.isCheck(ChessPiece.Color.WHITE)) {
 
-                                System.out.println("CHESS!!!");
+                                System.out.println("CHECK!!!");
                             }
                         } catch (Exception e) {
                             System.out.println("nije   sah");
